@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class TextbookControllerTest < ActionDispatch::IntegrationTest
+class ExchangeControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get textbook_index_url
+    get exchange_index_url
     assert_response :success
   end
 

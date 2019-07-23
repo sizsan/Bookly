@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "textbook#index" 
+  root to: "exchange#index" 
   
-  get 'textbook/index'
+  get 'exchange/index'
   
 end
