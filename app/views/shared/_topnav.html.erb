@@ -49,13 +49,13 @@
         <div class="buttons">
             <a>
                 <% if user_signed_in? %>
-                    <div id="logout"><%= link_to 'Logout', destroy_user_session_path, method:
-                    "delete",class:"button is-light"%></div>
-                    <div id="username"><%= current_user.email %></div>
+                  <div id="logout"><%= link_to 'Logout', destroy_user_session_path, method:
+                  "delete",class:"button is-light"%></div>
+                  <div id="username" class="button is-white"><%= current_user.email %></div>
                 <% else %>
-                    <p><%= link_to 'Sign Up', new_user_registration_path, class:"button is-primary"%>
-                    <%= link_to 'Login', new_user_session_path, class:"button is-light"%>
-                    </p>
+                  <p><%= link_to 'Sign Up', new_user_registration_path, class:"button is-primary"%>
+                  <%= link_to 'Login', new_user_session_path, class:"button is-light"%>
+                  </p>
                 <% end %>
             </a>
         </div>
