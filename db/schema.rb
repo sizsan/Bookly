@@ -15,9 +15,20 @@ ActiveRecord::Schema.define(version: 2019_07_24_044340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "adverts", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "seller_id"
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.string "condition"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_adverts_on_book_id"
+    t.index ["seller_id"], name: "index_adverts_on_seller_id"
+  end
+
   create_table "books", force: :cascade do |t|
-    t.integer "isbn"
-    t.string "title"
+    t.integer "isbn", null: false
+    t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,13 +39,15 @@ ActiveRecord::Schema.define(version: 2019_07_24_044340) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "username", null: false
-    t.string "firstname", null: false
-    t.string "lastname", null: false
+    t.string "username"
+    t.string "firstname"
+    t.string "lastname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "adverts", "books"
+  add_foreign_key "adverts", "users", column: "seller_id"
 end
