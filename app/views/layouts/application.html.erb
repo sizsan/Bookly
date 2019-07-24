@@ -7,17 +7,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
-  <body class="hero">
-    <div class="hero-head">
+  <body>
+    <head>
+      <%= render "shared/topnav" %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-    </div>
-    <div class="container">
-      <div class="hero-body">
-        <%= yield %>
-      </div>
+    </head>
+    <div class="hero-body">
+      <%= yield %>
     </div>
   </body>
 </html>
