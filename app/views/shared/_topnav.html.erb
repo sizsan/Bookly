@@ -14,12 +14,16 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item">
-          Home
+        <a>
+          <%= link_to "Home", exchange_index_path, :class => "navbar-item"%>
         </a>
 
         <a class="navbar-item">
-          Documentation
+          Buy
+        </a>
+
+        <a class="navbar-item">
+          Sell
         </a>
 
         <div class="navbar-item has-dropdown is-hoverable">
@@ -31,15 +35,12 @@
             <a class="navbar-item">
               About
             </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
+            <a>
+              <%= link_to "Documentation", "https://github.com/sizsan/Bookly", :class => "navbar-item" %>
             </a>
             <hr class="navbar-divider">
             <a class="navbar-item">
-              Report an issue
+              Contact
             </a>
           </div>
         </div>
