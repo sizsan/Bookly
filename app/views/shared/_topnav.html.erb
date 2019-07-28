@@ -1,63 +1,65 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="https://bookfully.herokuapp.com/">
-      <h1 class="title">Bookly</h1>
-    </a>
-
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bookfully.herokuapp.com/">
+        <%= image_tag('logo.png') %>
       </a>
 
-      <a class="navbar-item">
-        Documentation
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-            <a>
-                <% if user_signed_in? %>
-                  <div id="logout"><%= link_to 'Logout', destroy_user_session_path, method:
-                  "delete",class:"button is-light"%></div>
-                  <div id="username" class="button is-white"><%= current_user.email %></div>
-                <% else %>
-                  <p><%= link_to 'Sign Up', new_user_registration_path, class:"button is-primary"%>
-                  <%= link_to 'Login', new_user_session_path, class:"button is-light"%>
-                  </p>
-                <% end %>
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+
+        <a class="navbar-item">
+          Documentation
+        </a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              About
             </a>
+            <a class="navbar-item">
+              Jobs
+            </a>
+            <a class="navbar-item">
+              Contact
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Report an issue
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+              <a>
+                  <% if user_signed_in? %>
+                    <div id="logout"><%= link_to 'Logout', destroy_user_session_path, method:
+                    "delete",class:"button is-light"%></div>
+                    <div id="username" class="button is-white"><%= current_user.email %></div>
+                  <% else %>
+                    <p><%= link_to 'Sign Up', new_user_registration_path, class:"button is-primary"%>
+                    <%= link_to 'Login', new_user_session_path, class:"button is-light"%>
+                    </p>
+                  <% end %>
+              </a>
+          </div>
         </div>
       </div>
     </div>
