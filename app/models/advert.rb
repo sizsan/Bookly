@@ -14,4 +14,8 @@ class Advert < ApplicationRecord
     return Advert.order(:price)
   end 
 
+  def self.advert_id(current_user,book)
+    return Advert.where("book_id = ? AND user_id = ?",advert,current_user.id).first.id
+  end
+
 end
