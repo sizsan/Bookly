@@ -5,7 +5,7 @@
             <div class="field">
                 <%=label(:title, 'Title', :class => 'label')%>
                 <div class="control">
-                    <%= form.text_field :title, required: true, minlength: 1, :class => 'input', :type => 'text', :placeholder => 'Title'%>
+                    <%= form.text_field :title, required: true, minlength: 1, :class => 'input', :type => 'text'%>
                 </div>
             </div>
             <p><%= form.submit "Add book", :class => 'button is-primary' %></p><br>
