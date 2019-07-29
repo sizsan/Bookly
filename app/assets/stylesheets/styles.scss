@@ -1,0 +1,12 @@
+@import 'bulma/bulma';
+
+// Text highlighting effect
+.highlight {
+    background-color: #fff2ac;
+    background-image: linear-gradient(to right, #ffe359 0%, #fff2ac 100%);
+}
+
+// Background image
+html {
+    background: url('background.jpg');
+}
