@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th>Book</th>
+            <th>Author(s)</th>
             <th>ISBN</th>
         </tr>
     </thead>
@@ -12,6 +13,7 @@
             <% @books.each do |i| %>
                 <tr>
                     <td><%= link_to i.title, book_path(i.id) %></td>
+                    <td><%= i.authors %></td>
                     <td><%= i.isbn %></td>
                 </tr>
             <%end%>
@@ -19,5 +21,5 @@
     </tbody>
 </table>
 
-<%= button_to("Add a New Book to Sell", new_book_path, :method => :get, :class => "button is-primary")%><br>
-<%= button_to("Back", exchange_index_path, :method => :get, :class => "button")%>
+<p><%= link_to("Add a New Book to Sell", new_book_path, :class => "button is-primary")%></p><br>
+<p><%= link_to("Back", exchange_index_path, :class => "button")%></p>
