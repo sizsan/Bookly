@@ -1,0 +1,12 @@
+<div class="columns">
+    <div class="column is-three-fifths">
+        <h1 class="title"><%= @book.title %></h1>
+        <%= image_tag(@book.image_link, :class => "image") %>
+        <br>
+        <p class="subtitle">Description:<p>
+        <p><%= @book.description %></p>
+
+        <%= button_to("Sell this book", :method => :get, :class => "button") %><br>
+        <%= link_to("Back", books_path, :method => :get, :class => 'button') %>
+    </div>
+</div>
