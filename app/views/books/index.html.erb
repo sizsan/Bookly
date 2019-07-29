@@ -1,0 +1,23 @@
+<h1 class="title">Books</h1>
+
+<table class="table is-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>ISBN</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @books %>
+            <% @books.each do |i| %>
+                <tr>
+                    <td><%= link_to i.title, book_path(i.id) %></td>
+                    <td><%= i.isbn %></td>
+                </tr>
+            <%end%>
+        <%end%>
+    </tbody>
+</table>
+
+<%= button_to("Add a New Book to Sell", new_book_path, :method => :get, :class => "button is-primary")%><br>
+<%= button_to("Back", exchange_index_path, :method => :get, :class => "button")%>

@@ -1,0 +1,15 @@
+<h1 class="title">Add a Book to Sell</h1>
+<div class="columns">
+    <div class="column is-two-fifths">
+        <%= form_with model: @book, local:true do |form| %>
+            <div class="field">
+                <%=label(:title, 'Title', :class => 'label')%>
+                <div class="control">
+                    <%= form.text_field :title, required: true, minlength: 1, :class => 'input', :type => 'text', :placeholder => 'Title'%>
+                </div>
+            </div>
+            <p><%= form.submit "Add book", :class => 'button is-primary' %></p><br>
+            <p><%= link_to("Back", books_path, :method => :get, :class => 'button') %></p>
+        <%end%>
+    </div>
+</div>
