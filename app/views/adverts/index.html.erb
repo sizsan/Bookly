@@ -1,0 +1,25 @@
+<h1 class="title">Adverts</h1>
+
+<table class="table is-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Condition</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if @adverts %>
+            <% @adverts.each do |advert| %>
+                <tr>
+                    <td><%= advert.book.title%></td>
+                    <td><%= advert.condition %></td>
+                    <td><%= advert.price %></td>
+                </tr>
+            <%end%>
+        <%end%>
+    </tbody>
+</table>
+
+<p><%= link_to("Add a New Book to Sell", new_book_path, :class => "button is-primary")%></p><br>
+<p><%= link_to("Back", exchange_index_path, :class => "button")%></p>

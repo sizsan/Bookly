@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: "exchange#index" 
   resources :exchange
   resources :books
+  resources :adverts
 end
