@@ -1,33 +1,32 @@
 <div class="columns">
-        <div class="column is-three-fifths">
-            <h1 class="title">Create an Ad</h1>
-            <h1 class="subtitle"><%= @current_book.title %></h1>
-            <div class="column ">
-                <%= image_tag(@current_book.image_link, :class => "image") %>
-            </div>    
-            <div class = "column">
-                <h2 class="subtitle">Author : <%= @current_book.authors %></h2>
-                <h2 class="subtitle">ISBN : <%= @current_book.isbn %></h2>
-            </div>
-            <br>
-            <%= form_with model: @advert, local:true do |f| %>
-            <%= f.hidden_field :book_id, :value => @current_book.id %>
-            <%= f.hidden_field :seller_id, :value => current_user.id %>
-            <div class="field">
-                <%=label(:price, 'Price', :class => 'label')%>
-                <div class="control">
-                    <%= f.number_field :price, required: true, :class => 'input', :type => 'number'%>
-                </div>
-            </div>
-            <div class="field">
-                    <%=label(:condition, 'Condition', :class => 'label')%>
-                    <div class="control">
-                        <%= f.text_field :condition, required: true, :class => 'input', :type => 'text'%>
-                    </div>
-                </div>
-            <p><%= f.submit "Post Advert", :class => 'button is-primary' %></p><br>
-            <p><%= link_to("Back", adverts_path, :method => :get , :class => 'button') %></p>
-            <%end%>
-    
+    <div class="column is-three-fifths">
+        <h1 class="title">Create an Ad</h1>
+        <h1 class="subtitle"><%= @current_book.title %></h1>
+        <div class="column">
+            <%= image_tag(@current_book.image_link, :class => "image") %>
+        </div>    
+        <div class="column">
+            <h3>Author: <%= @current_book.authors %></h3>
+            <h3>ISBN: <%= @current_book.isbn %></h3>
         </div>
+        <br>
+        <%= form_with model: @advert, local:true do |f| %>
+        <%= f.hidden_field :book_id, :value => @current_book.id %>
+        <%= f.hidden_field :seller_id, :value => current_user.id %>
+        <div class="field">
+            <%=label(:price, 'Price', :class => 'label')%>
+            <div class="control">
+                <%= f.number_field :price, required: true, :class => 'input', :type => 'number'%>
+            </div>
+        </div>
+        <div class="field">
+                <%=label(:condition, 'Condition', :class => 'label')%>
+                <div class="control">
+                    <%= f.text_field :condition, required: true, :class => 'input', :type => 'text'%>
+                </div>
+            </div>
+        <p><%= f.submit "Post Ad", :class => 'button is-primary' %></p><br>
+        <p><%= link_to("Back", adverts_path, :method => :get , :class => 'button') %></p>
+        <%end%>
+    </div>
 </div>
