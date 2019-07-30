@@ -18,8 +18,8 @@ class Advert < ApplicationRecord
     return Advert.where("book_id = ? AND user_id = ?",advert,current_user.id).first.id
   end
 
-  def self.create_advert(book_id, price, condition)
-      advert = Advert.new(book_id: book_id, price: price, condition: condition)
+  def self.create_advert(book_id, price, condition, seller_id)
+      advert = Advert.new(book_id: book_id, price: price, condition: condition, seller_id: seller_id)
       advert.save!
     return advert
   end
