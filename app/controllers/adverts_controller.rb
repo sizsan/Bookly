@@ -5,15 +5,15 @@ class AdvertsController < ApplicationController
   
   def new
     @advert = Advert.new
+    @current_book = Book.find(params[:book_id])
   end
   
   def create
-    @current_book ||= Book.find(params[:book_id])
-   
+    @advert = Advert.create_advert(params[:book_id], params[:price], params[:condition])
+    redirect_to adverts_path
   end
 
   def show
-  
   end
   
   def edit
@@ -21,6 +21,5 @@ class AdvertsController < ApplicationController
   end
   
   def destroy
-  
   end
 end

@@ -7,7 +7,7 @@
         <p class="subtitle">Description:<p>
         <p><%= @book.description %></p>
 
-        <p><%= link_to("Sell this book", :class => "button") %></p><br>
+        <p><%= link_to("Sell this book", new_advert_path(book_id: @book.id), :class => "button") %></p><br>
         <p><%= link_to("Back", books_path, :class => 'button') %></p>
     </div>
 </div>
