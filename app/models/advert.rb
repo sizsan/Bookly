@@ -14,6 +14,10 @@ class Advert < ApplicationRecord
     return Advert.order(:price)
   end 
 
+  def self.order_by_created
+    return Advert.order(:created_at).reverse_order
+  end
+
   def self.advert_id(current_user,book)
     return Advert.where("book_id = ? AND user_id = ?",advert,current_user.id).first.id
   end
