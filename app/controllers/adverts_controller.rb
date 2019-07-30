@@ -1,7 +1,8 @@
 class AdvertsController < ApplicationController
   def index
     @adverts = Advert.order_by_price
-  end
+    @book = Book.all    
+  end 
   
   def new
     @advert = Advert.new
