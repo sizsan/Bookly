@@ -15,7 +15,7 @@ class AdvertsController < ApplicationController
   end
 
   def show
-    @adverts.order_by_created
+    @advert = Advert.find(params[:id])
   end
   
   def edit

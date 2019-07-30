@@ -1,0 +1,18 @@
+<div class="columns">
+        <div class="column is-three-fifths">
+            <h1 class="title"><%= @advert.book.title %></h1>
+            <h2 class="subtitle"><%= @advert.book.authors %></h2>
+            <%= image_tag(@advert.book.image_link, :class => "image") %>
+            <br>
+                    <p class="subtitle">Description:<p>
+                    <p><%= @advert.book.description %></p>
+                    <br>
+            <h2 class="subtitle"><%= @advert.condition %></h2>
+            <h2 class="subtitle"><%= @advert.seller.email%></h2>
+            
+            
+            <br>
+        <p><%= link_to("Order", new_advert_path, :class => "button") %></p><br>               
+            <p><%= link_to("Back", books_path, :class => 'button') %></p>
+        </div>
+    </div>
