@@ -1,6 +1,6 @@
 class AdvertsController < ApplicationController
   def index
-    @adverts = Advert.order_by_price
+    @adverts = Advert.order_by_created
     @book = Book.all    
   end 
   
@@ -15,6 +15,7 @@ class AdvertsController < ApplicationController
   end
 
   def show
+    @advert = Advert.find(params[:id])
   end
   
   def edit
