@@ -11,7 +11,7 @@
         <h2>Contact: <%= @advert.seller.email%></h2>
 
         <br>
-        <p><%= link_to("Order", new_advert_path, :class => "button is-primary") %></p><br>               
+        <p><%= link_to("Order", new_order_path(advert_id: @advert.id), :class => "button is-primary") %></p><br>               
         <p><%= link_to("Back", adverts_path, :class => 'button') %></p>
     </div>
 </div>

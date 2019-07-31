@@ -1,0 +1,18 @@
+<h1 class="title">View Your Order</h1>
+
+<table class="table is-striped">
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+                  <tr>
+                    <td><%= @advert.book.title%></td>
+                    <td>$<%= @advert.price %></td>
+                </tr>
+    </tbody>
+</table>
+
+<p><%= link_to("Back", exchange_index_path, :class => "button")%></p>
