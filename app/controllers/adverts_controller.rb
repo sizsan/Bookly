@@ -11,6 +11,7 @@ class AdvertsController < ApplicationController
   
   def create
     @advert = Advert.create_advert(params[:advert][:book_id], params[:advert][:price], params[:advert][:condition], params[:advert][:seller_id])
+    @advert.cover.attach(params[:advert][:cover])
     redirect_to adverts_path
   end
 

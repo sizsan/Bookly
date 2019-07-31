@@ -2,7 +2,11 @@
     <div class="column is-three-fifths">
         <h1 class="title"><%= @advert.book.title %></h1>
         <h2 class="subtitle"><%= @advert.book.authors %></h2>
-        <%= image_tag(@advert.book.image_link, :class => "image") %>
+        <% if @advert.cover%>
+            <%= image_tag(@advert.cover, width: 200) %>
+        <% else %>
+            <%= image_tag(@advert.book.image_link, :class => "image") %>
+        <% end %>
         <br>
         <p class="subtitle">Description</p>
         <p><%= @advert.book.description %></p>
