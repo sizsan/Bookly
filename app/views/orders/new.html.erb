@@ -4,15 +4,31 @@
     <thead>
         <tr>
             <th>Book</th>
+            <th>Author</th>
             <th>Price</th>
         </tr>
     </thead>
     <tbody>
                   <tr>
                     <td><%= @advert.book.title%></td>
-                    <td>$<%= @advert.price %></td>
+                    <td><%= @advert.book.authors%></td>
+                    <td><%= number_to_currency @advert.price %></td>
                 </tr>
     </tbody>
 </table>
+<p><%= link_to("Checkout", new_order_path(advert_id: @advert.id), :class => "button is-primary") %></p><br>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+    var stripe = Stripe('pk_test_ZHuJyiYgWYeKRpyIwMTnqAFe00fP2ZKjHg');
+    stripe.redirectToCheckout({
+    sessionId: '<%= @session.id %>'
+    }).then(function (result) {
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `result.error.message`.
+    });
+    </script>
 
 <p><%= link_to("Back", exchange_index_path, :class => "button")%></p>
