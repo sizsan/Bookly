@@ -1,17 +1,15 @@
-# Bookfully
+# Bookly
 
 This repository contains the Ruby on Rails assessment (A2-1) for Coder Academy's GenTech program.
 
 Group members:
 - Jack Gronow
-- Natalie Sargent
 - Tony Huynh
+- Natalie Sargent
 
-## Link to Application
-https://bookfully.herokuapp.com/
+>### [Bookly App on Heroku](https://bookfully.herokuapp.com/)
 
-## A link to your GitHub repository
-https://github.com/sizsan/Bookly
+>### [GitHub Repository](https://github.com/sizsan/Bookly)
 
 ## Description
 ### Problem definition / purpose
@@ -34,7 +32,7 @@ https://github.com/sizsan/Bookly
 ## Short Answer Questions
 1. What is the need (i.e. challenge) that you will be addressing in your project?
 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
-3. Describe the project will you be conducting and how. your App will address the needs.
+3. Describe the project you will be conducting and how your App will address the needs.
 4. Describe the network infrastructure the App may be based on.
 5. Identify and describe the software to be used in your App.
 6. Identify the database to be used in your App and provide a justification for your choice.
