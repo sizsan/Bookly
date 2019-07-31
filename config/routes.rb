@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :exchange
   resources :books
   resources :adverts
+  resources :orders
 end
