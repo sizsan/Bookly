@@ -1,18 +1,22 @@
+
+
 <h1 class="title">View Your Order</h1>
 
 <table class="table is-striped">
     <thead>
         <tr>
             <th>Book</th>
+            <th>Author</th>
             <th>Price</th>
         </tr>
     </thead>
     <tbody>
                   <tr>
                     <td><%= @advert.book.title%></td>
-                    <td>$<%= @advert.price %></td>
+                    <td><%= @advert.book.authors%></td>
+                    <td>$<%= number_to_currency @advert.price %></td>
                 </tr>
     </tbody>
 </table>
-
+<p><%= link_to("Checkout", new_order_path(advert_id: @advert.id), :class => "button is-primary") %></p><br>
 <p><%= link_to("Back", exchange_index_path, :class => "button")%></p>

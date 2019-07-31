@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
     def new
         @order = Order.new
         @advert = Advert.find(params[:advert_id])
+        
     end
 
     def create
