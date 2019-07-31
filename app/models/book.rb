@@ -5,6 +5,9 @@ class Book < ApplicationRecord
     def self.select_book(title)
         books = GoogleBooks.search(title)
         book = books.first
+        if book == nil
+            return false
+        end
         new_book = Book.new
         new_book.title = book.title
         new_book.isbn = book.isbn
