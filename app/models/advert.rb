@@ -1,6 +1,7 @@
 class Advert < ApplicationRecord
   belongs_to :book
   belongs_to :seller, class_name: "User"
+  has_one_attached :cover
 
   def self.order_by_user
     adverts=[]

@@ -66,3 +66,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'googlebooks', '~> 0.0.9'
 gem "devise", "~> 4.6"
+
+# Cloudinary gem to upload book image
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
+

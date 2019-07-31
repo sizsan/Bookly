@@ -45,6 +45,7 @@ GEM
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
       marcel (~> 0.3.1)
+    activestorage-cloudinary-service (0.2.3)
     activesupport (5.2.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
@@ -55,6 +56,7 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    aws_cf_signer (0.1.3)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.4)
@@ -74,6 +76,9 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    cloudinary (1.11.1)
+      aws_cf_signer
+      rest-client
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -91,6 +96,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
     execjs (2.7.0)
     faraday (0.15.4)
@@ -100,6 +107,8 @@ GEM
       activesupport (>= 4.2.0)
     googlebooks (0.0.9)
       httparty
+    http-cookie (1.0.3)
+      domain_name (~> 0.5)
     httparty (0.17.0)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -132,6 +141,7 @@ GEM
     multipart-post (2.1.1)
     net-http-persistent (3.1.0)
       connection_pool (~> 2.2)
+    netrc (0.11.0)
     nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
@@ -174,6 +184,10 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec-core (3.8.2)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.4)
@@ -228,6 +242,9 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.6)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -245,10 +262,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activestorage-cloudinary-service
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
+  cloudinary
   coffee-rails (~> 4.2)
   devise (~> 4.6)
   googlebooks (~> 0.0.9)
