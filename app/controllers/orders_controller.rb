@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
         @order = Order.new
         @advert = Advert.find(params[:advert_id])
        
-        Stripe.api_key = 'sk_test_cApeAHHlCZ0Ou0V2udJQBZ4A00A4dhK4dy'
+        Stripe.api_key = Rails.application.credentials.dig(:stripe, :api_secret)
         @session = Stripe::Checkout::Session.create(
         payment_method_types: ['card'],
         line_items: [{
