@@ -11,6 +11,9 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.select_book(params[:book][:title])
+    if @book == false
+      flash[:info] = "Could not find that book."
+    end
     redirect_to books_path
   end
 
