@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+    before_action :authenticate_user!
+    
     def new
         @order = Order.new
         @advert = Advert.find(params[:advert_id])
