@@ -16,7 +16,7 @@
         <div class="field">
             <%=label(:price, 'Price', :class => 'label')%>
             <div class="control">
-                <%= f.number_field :price, required: true, :class => 'input', :type => 'number'%>
+                <%= f.number_field :price, required: true, step: :any, :class => 'input', :type => 'number'%>
             </div>
         </div>
         <div class="field">

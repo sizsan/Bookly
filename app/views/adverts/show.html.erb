@@ -9,7 +9,7 @@
         <br>
         <h2>Condition: <%= @advert.condition %></h2>
         <h2>Contact: <%= @advert.seller.email%></h2>
-
+        <h2>Price: <%=number_to_currency @advert.price %></h2>
         <br>
         <p><%= link_to("Order", new_order_path(advert_id: @advert.id), :class => "button is-primary") %></p><br>               
         <p><%= link_to("Back", adverts_path, :class => 'button') %></p>
