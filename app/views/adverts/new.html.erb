@@ -22,7 +22,7 @@
         <div class="field">
             <%=label(:condition, 'Condition', :class => 'label')%>
             <div class="control">
-                <%= f.text_field :condition, required: true, :class => 'input', :type => 'text'%>
+                <%= f.select :condition, ['Brand New', 'Like New', 'Very Good', 'Good', 'Acceptable']%>
             </div>
         </div>
         <div class="field">
