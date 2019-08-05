@@ -32,15 +32,15 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
+            <a>
+              <%= link_to "About", about_path, :class => "navbar-item" %>
             </a>
             <a>
               <%= link_to "Documentation", "https://github.com/sizsan/Bookly", :class => "navbar-item" %>
             </a>
             <hr class="navbar-divider">
-            <a class="navbar-item">
-              Contact
+            <a>
+              <%= link_to "Contact", contact_path, :class => "navbar-item" %>
             </a>
           </div>
         </div>

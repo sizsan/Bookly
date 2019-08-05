@@ -14,7 +14,7 @@ get 'order/complete', to: 'orders#complete'
 delete "adverts/:id", to: "adverts#destroy", as: "advert_destroy_path"
 
 # For about & contact page
-get "/about", to: "exchange#about", as "about"
-get "/contact", to: "exchange#contact", as "contact"
+get "/about", to: "exchange#about", as: "about"
+get "/contact", to: "exchange#contact", as: "contact"
 
 end

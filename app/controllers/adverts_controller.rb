@@ -6,7 +6,7 @@ class AdvertsController < ApplicationController
   
   def new
     @advert = Advert.new
-    # @current_book = Book.find(params[:book_id])
+    @current_book = Book.find(params[:book_id])
   end
   
   def create
