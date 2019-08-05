@@ -16,13 +16,12 @@ class OrdersController < ApplicationController
         currency: 'aud',
         quantity: 1,
 }],
-success_url: 'http://localhost:3000/orders/complete',
+success_url: 'http://localhost:3000/order/complete',
 cancel_url: 'http://localhost:3000/orders/cancel',
 )
     end
 
-    def create
-        @order = Order.create_order(params[:advert][:book_id], params[:advert][:price], params[:advert][:condition], params[:advert][:seller_id])
-        redirect_to 
+    def complete
     end
+
 end

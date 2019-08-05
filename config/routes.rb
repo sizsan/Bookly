@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :books
   resources :adverts
   resources :orders
+
+  get 'order/complete', to: 'orders#complete'
 end
