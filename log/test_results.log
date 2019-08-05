@@ -1,0 +1,173 @@
+
+===================================
+Tue 30 Jul 23:20:15 AEST 2019
+===================================
+
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new questions with correct fields
+
+User
+  creates a new user with correct fields
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+Finished in 0.07638 seconds (files took 0.84083 seconds to load)
+11 examples, 0 failures
+
+
+
+===================================
+Wed 31 Jul 11:12:23 AEST 2019
+===================================
+
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Books
+  GET /books
+    works!
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 1.91 seconds (files took 0.87056 seconds to load)
+19 examples, 0 failures
+
+
+
+===================================
+Mon 5 Aug 15:59:30 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 2.8 seconds (files took 0.84801 seconds to load)
+38 examples, 0 failures
+
+
