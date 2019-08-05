@@ -7,7 +7,7 @@ Group members:
 - Tony Huynh
 - Natalie Sargent
 
->### [Bookly App on Heroku](https://bookfully.herokuapp.com/)
+>### [Bookly App on Heroku](https://b00kly.herokuapp.com/)
 
 >### [GitHub Repository](https://github.com/sizsan/Bookly)
 
