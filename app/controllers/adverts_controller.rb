@@ -20,5 +20,8 @@ class AdvertsController < ApplicationController
   end
   
   def destroy
+    advert_id = params[:id]
+    Advert.destroy(advert_id)
+    redirect_to adverts_path
   end
 end
