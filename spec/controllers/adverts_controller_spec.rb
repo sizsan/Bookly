@@ -86,7 +86,7 @@ RSpec.describe AdvertsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
+      it "returns a success response" do
         post :create, params: {advert: invalid_attributes}, session: valid_session
         expect(response).to redirect_to(adverts_path)
       end

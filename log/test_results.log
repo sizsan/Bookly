@@ -100,7 +100,7 @@ AdvertsController
       creates a new Advert
       redirects to the created advert
     with invalid params
-      returns a success response (i.e. to display the 'new' template)
+      returns a success response
   DELETE #destroy
     destroys the requested advert
     redirects to the adverts list
@@ -117,7 +117,7 @@ BooksController
       creates a new Book
       redirects to the created book
     with invalid params
-      returns a success response (i.e. to display the 'new' template)
+      returns a success response
 
 Advert
   creates new adverts with correct fields

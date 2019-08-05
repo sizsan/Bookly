@@ -64,7 +64,7 @@ RSpec.describe BooksController, type: :controller do
       end
   
       context "with invalid params" do
-        it "returns a success response (i.e. to display the 'new' template)" do
+        it "returns a success response" do
             sign_in(user)
             post :create, params: {book: invalid_attributes}, session: valid_session
             expect(response).to redirect_to(books_path)
