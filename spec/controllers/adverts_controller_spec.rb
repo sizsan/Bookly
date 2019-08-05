@@ -29,11 +29,11 @@ RSpec.describe AdvertsController, type: :controller do
   # Advert. As you add validations to Advert, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { price:12.00,condition:'New',book_id: book.id,seller_id: user.id }
+    { price:12.00, condition: 'New', book_id: book.id, seller_id: user.id }
   }
 
   let(:invalid_attributes) {
-    { price:'12',condition:Old }
+    { price:'12', condition:'Old', book_id: book.id, seller_id: user.id }
   }
 
   let(:book) {
@@ -71,49 +71,41 @@ RSpec.describe AdvertsController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "returns a success response" do
-      advert = Advert.create! valid_attributes
-      get :edit, params: {id: advert.to_param}, session: valid_session
-      expect(response).to be_successful
+  describe "POST #create" do
+    context "with valid params" do
+      it "creates a new Advert" do
+        expect {
+          post :create, params: {advert: valid_attributes}, session: valid_session
+        }.to change(Advert, :count).by(1)
+      end
+
+      it "redirects to the created advert" do
+        post :create, params: {advert: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(adverts_path)
+      end
+    end
+
+    context "with invalid params" do
+      it "returns a success response (i.e. to display the 'new' template)" do
+        post :create, params: {advert: invalid_attributes}, session: valid_session
+        expect(response).to redirect_to(adverts_path)
+      end
     end
   end
 
-  # describe "POST #create" do
-  #   context "with valid params" do
-  #     it "creates a new Advert" do
-  #       expect {
-  #         post :create, params: {advert: valid_attributes}, session: valid_session
-  #       }.to change(Advert, :count).by(1)
-  #     end
+  describe "DELETE #destroy" do
+    it "destroys the requested advert" do
+      advert = Advert.create! valid_attributes
+      expect {
+        delete :destroy, params: {id: advert.to_param}, session: valid_session
+      }.to change(Advert, :count).by(-1)
+    end
 
-  #     it "redirects to the created advert" do
-  #       post :create, params: {advert: valid_attributes}, session: valid_session
-  #       expect(response).to redirect_to(Advert.last)
-  #     end
-  #   end
-
-  #   context "with invalid params" do
-  #     it "returns a success response (i.e. to display the 'new' template)" do
-  #       post :create, params: {advert: invalid_attributes}, session: valid_session
-  #       expect(response).to be_successful
-  #     end
-  #   end
-  # end
-
-  # describe "DELETE #destroy" do
-  #   it "destroys the requested advert" do
-  #     advert = Advert.create! valid_attributes
-  #     expect {
-  #       delete :destroy, params: {id: advert.to_param}, session: valid_session
-  #     }.to change(Advert, :count).by(-1)
-  #   end
-
-  #   it "redirects to the adverts list" do
-  #     advert = Advert.create! valid_attributes
-  #     delete :destroy, params: {id: advert.to_param}, session: valid_session
-  #     expect(response).to redirect_to(adverts_url)
-  #   end
-  # end
+    it "redirects to the adverts list" do
+      advert = Advert.create! valid_attributes
+      delete :destroy, params: {id: advert.to_param}, session: valid_session
+      expect(response).to redirect_to(adverts_url)
+    end
+  end
 
 end

@@ -13,8 +13,8 @@ RSpec.describe BooksController, type: :controller do
       { isbn:'XXXXXXXXXXXXX',title:nil,description:3000,image_link:3000,authors:3000 }
     }
 
-    let(:seller_attributes) {
-      { email:'susan@example.com',username:'susankey',password: '123testing1',password_confirmation: '123testing1',firstname:'Susan',lastname:'Key' }
+    let(:user) {
+      User.create(email:'susan@example.com',username:'susankey',password: '123testing1',password_confirmation: '123testing1',firstname:'Susan',lastname:'Key')
     }
   
     # This should return the minimal set of values that should be in the session
@@ -31,7 +31,6 @@ RSpec.describe BooksController, type: :controller do
   
     describe "GET #show" do
       it "returns a success response" do
-        user = User.create! seller_attributes
         book = Book.create! valid_attributes
         sign_in(user)
         get :show, params: {id: book.to_param}, session: valid_session
@@ -41,7 +40,6 @@ RSpec.describe BooksController, type: :controller do
   
     describe "GET #new" do
       it "returns a success response" do
-        user = User.create! seller_attributes
         book = Book.create! valid_attributes
         sign_in(user)
         get :new, params: {}, session: valid_session
@@ -52,7 +50,6 @@ RSpec.describe BooksController, type: :controller do
     describe "POST #create" do
       context "with valid params" do
         it "creates a new Book" do
-            user = User.create! seller_attributes
             sign_in(user)
             expect {
                 post :create, params: {book: valid_attributes}, session: valid_session
@@ -60,7 +57,6 @@ RSpec.describe BooksController, type: :controller do
         end
   
         it "redirects to the created book" do
-            user = User.create! seller_attributes
             sign_in(user)
             post :create, params: {book: valid_attributes}, session: valid_session
             expect(response).to redirect_to(books_path)
@@ -69,7 +65,6 @@ RSpec.describe BooksController, type: :controller do
   
       context "with invalid params" do
         it "returns a success response (i.e. to display the 'new' template)" do
-            user = User.create! seller_attributes
             sign_in(user)
             post :create, params: {book: invalid_attributes}, session: valid_session
             expect(response).to redirect_to(books_path)
