@@ -6,15 +6,15 @@ RSpec.describe BooksController, type: :controller do
     # Book. As you add validations to Book, be sure to
     # adjust the attributes here as well.
     let(:valid_attributes) {
-        { isbn:'9780409337419',title:'Queensland Evidence Law',description:nil,image_link:'http://books.google.com/books/content?id=ngP8oAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',authors:'David Field' }
+      { isbn:'9780409337419',title:'Queensland Evidence Law',description:nil,image_link:'http://books.google.com/books/content?id=ngP8oAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',authors:'David Field' }
     }
   
     let(:invalid_attributes) {
-        { isbn:'XXXXXXXXXXXXX',title:nil,description:3000,image_link:3000,authors:3000 }
+      { isbn:'XXXXXXXXXXXXX',title:nil,description:3000,image_link:3000,authors:3000 }
     }
 
     let(:seller_attributes) {
-        { email:'susan@example.com',username:'susankey',password: '123testing1',password_confirmation: '123testing1',firstname:'Susan',lastname:'Key' }
+      { email:'susan@example.com',username:'susankey',password: '123testing1',password_confirmation: '123testing1',firstname:'Susan',lastname:'Key' }
     }
   
     # This should return the minimal set of values that should be in the session
