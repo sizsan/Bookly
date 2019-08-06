@@ -21,10 +21,16 @@ Group members:
 ## Design Documentation
 ### Design Process
 ### User Stories
+    US1 - As a User I can Post an Advert for my chosen book.
+    US2 - As a User I can search for a specfic book.
+    US3 - As a User I can view a list of books availbe for sale.
+    US4 - As a User I can order a book. 
+    US5 - As a User I can add photos to my adverts.
+    US6 - As a Seller I can delete my Adverts
+
 ### Unified Modeling Language (UML) Diagram
 ### Wireframes
 ### Database Entity Relationship Diagrams
-
 ## Planning Process
     To Plan this we used trello and daily meetups to enure everyone was up to date and knew what there task for the day was.
 ### Project plan & timeline
@@ -61,7 +67,7 @@ Group members:
         Day 3
         - Complete any remaining tasks on the Trello board
 ### Screenshots of Trello board(s)
-
+    
 ## Short Answer Questions
 1. What is the need (i.e. challenge) that you will be addressing in your project?
 2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
