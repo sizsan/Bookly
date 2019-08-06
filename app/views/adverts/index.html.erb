@@ -1,9 +1,10 @@
-<h1 class="title">Bookstore</h1>
+<h1 class="title">Book Store</h1>
+<p class="subtitle">Select a Book to Purchase</p>
 
 <table class="table is-striped">
     <thead>
         <tr>
-            <th>Book</th>
+            <th>Title</th>
             <th>Condition</th>
             <th>Price</th>
         </tr>
@@ -14,7 +15,7 @@
                 <tr>
                     <td><%= link_to advert.book.title, advert_path(advert.id)%></td>
                     <td><%= advert.condition %></td>
-                    <td>$<%= advert.price %></td>
+                    <td><%= number_to_currency advert.price %></td>
                 </tr>
             <%end%>
         <%end%> 
