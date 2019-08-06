@@ -1,10 +1,10 @@
 <h1 class="title">Book List</h1>
-<p class="subtitle">Select a book from the list or add a new book to sell</p>
+<p class="subtitle">Select or Add a Book to Sell</p>
 
 <table class="table is-striped">
     <thead>
         <tr>
-            <th>Book</th>
+            <th>Title</th>
             <th>Author(s)</th>
             <th>ISBN</th>
         </tr>
@@ -22,5 +22,5 @@
     </tbody>
 </table>
 
-<p><%= link_to("Add a New Book to Sell", new_book_path, :class => "button is-primary")%></p><br>
+<p><%= link_to("Add", new_book_path, :class => "button is-primary")%></p><br>
 <p><%= link_to("Back", exchange_index_path, :class => "button")%></p>

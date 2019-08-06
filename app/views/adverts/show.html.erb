@@ -8,20 +8,20 @@
             <%= image_tag(@advert.book.image_link, :class => "image") %>
         <% end %>
         <br>
-        <p class="subtitle">Description</p>
-        <p><%= @advert.book.description %></p>
+            <p class="subtitle">Description</p>
+            <p><%= @advert.book.description %></p>
         <br>
-        <h2>Condition: <%= @advert.condition %></h2>
-        <h2>Contact: <%= @advert.seller.email%></h2>
-        <h2>Price: <%=number_to_currency @advert.price %></h2>
+            <h2>Condition: <%= @advert.condition %></h2>
+            <h2>Contact: <%= @advert.seller.email%></h2>
+            <h2>Price: <%=number_to_currency @advert.price %></h2>
         <br>
-        <% if @advert.seller_id == current_user.id %>
-        <p><%= link_to "Delete", @advert, method: :delete, :class => "button is-primary" %></p>
-        <br>
-        <%end%>
         <% if @advert.seller_id != current_user.id %>
-        <p><%= link_to("Order", new_order_path(advert_id: @advert.id), :class => "button is-primary") %></p><br>       
+            <p><%= link_to("Order", new_order_path(advert_id: @advert.id), :class => "button is-primary") %></p><br>       
         <%end%>        
+        <% if @advert.seller_id == current_user.id %>
+            <p><%= link_to "Delete", @advert, method: :delete, :class => "button is-primary" %></p>
+            <br>
+        <%end%>
         <p><%= link_to("Back", adverts_path, :class => 'button') %></p>
     </div>
 </div>
