@@ -1,0 +1,27 @@
+<h1 class="title">Contact</h1>
+<div class="columns">
+    <div class="column is-two-fifths">
+        <form action="https://usebasin.com/f/31e19b13edf3" method="POST">
+            <div class="field">
+                <label for="name" class="label">Name</label>
+                <div class="control">
+                <input type="text" id="name" name="name" placeholder="Your name..." class="input">
+                </div>
+            </div>
+            <div class="field">
+                <label for="email" class="label">Email</label>
+                <div class="control">
+                    <input type="text" id="email" name="email" placeholder="Your email address..." class="input">
+                </div>
+            </div>
+            <div class="field">
+                <label for="message" class="label">Message</label>
+                <div class="control">
+                    <textarea id="message" name="message" placeholder="Write something..." class="textarea"></textarea>
+                </div>
+            </div>
+                <input class="button is-link" type="submit" value="Submit">
+        </form>
+        <br><p><%= link_to("Back", exchange_index_path, :class => "button")%></p>
+    </div>
+</div>

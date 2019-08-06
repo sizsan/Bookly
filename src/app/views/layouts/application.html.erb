@@ -7,15 +7,18 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
     <head>
       <%= render "shared/topnav" %>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <p class="flash"><%= flash[:info] %></p>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <p class="flash"><%= flash[:info] %></p>
+      </div>
     </head>
     <div class="container section">
       <%= yield %>
