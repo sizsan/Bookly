@@ -26,7 +26,40 @@ Group members:
 ### Database Entity Relationship Diagrams
 
 ## Planning Process
+    To Plan this we used trello and daily meetups to enure everyone was up to date and knew what there task for the day was.
 ### Project plan & timeline
+    Week 1
+        Day 1 
+        - Settle on an idea for our maket place.
+        - Begin Skeletons of the App, Readme, ERD, Trello 
+        - Impliment a styling framework (ie Bulma)
+        Day 2
+        - Finalise the ERD 
+        - Plan the models
+        - Populate database with test data 
+        Day 3 
+        - Finalise Wireframes 
+        - Create relationships between models
+        - Define a clear purpose for each controller
+    Week 2
+        Day 1 
+        - Impliment Models 
+        - Begin Testing
+        - Plan Controllers
+        Day 2 
+        - Impliemnt Controllers
+        - Impliment User Authenication
+        Day 3 
+        - Finish MVP
+        - Finish RSPEC testing
+    Week 3
+        Day 1 
+        - Begin Docmentation
+        - Finalise the MVP with negative testing 
+        Day 2
+        - Work through the documentation   
+        Day 3
+        - Complete any remaining tasks on the Trello board
 ### Screenshots of Trello board(s)
 
 ## Short Answer Questions
