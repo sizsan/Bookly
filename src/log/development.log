@@ -1,0 +1,403 @@
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE DATABASE "bookly_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE DATABASE "bookly_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35mSQL (0.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (14.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (34.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (2.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (22.4ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (5.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "adverts" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE TABLE "adverts" ("id" bigserial primary key, "book_id" bigint NOT NULL, "seller_id" bigint, "price" decimal(10,2) NOT NULL, "condition" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_adverts_on_book_id" ON "adverts"  ("book_id")[0m
+  ↳ db/schema.rb:39
+  [1m[35m (18.2ms)[0m  [1m[35mCREATE  INDEX  "index_adverts_on_seller_id" ON "adverts"  ("seller_id")[0m
+  ↳ db/schema.rb:39
+  [1m[35m (2.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "books" CASCADE[0m
+  ↳ db/schema.rb:50
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "books" ("id" bigserial primary key, "isbn" character varying NOT NULL, "title" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "description" character varying, "image_link" character varying, "authors" character varying)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (8.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  ↳ db/schema.rb:60
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "advert_id" bigint, "buyer_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:60
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_advert_id" ON "orders"  ("advert_id")[0m
+  ↳ db/schema.rb:60
+  [1m[35m (18.7ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_buyer_id" ON "orders"  ("buyer_id")[0m
+  ↳ db/schema.rb:60
+  [1m[35m (8.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:69
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "username" character varying, "firstname" character varying, "lastname" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:69
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:69
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/schema.rb:69
+  [1m[35m (5.3ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  ↳ db/schema.rb:84
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "adverts" ADD CONSTRAINT "fk_rails_f3a419b025"
+FOREIGN KEY ("book_id")
+  REFERENCES "books" ("id")
+[0m
+  ↳ db/schema.rb:85
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "adverts" ADD CONSTRAINT "fk_rails_e097857efb"
+FOREIGN KEY ("seller_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:86
+  [1m[35m (7.7ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_67964d5ed4"
+FOREIGN KEY ("advert_id")
+  REFERENCES "adverts" ("id")
+[0m
+  ↳ db/schema.rb:87
+  [1m[35m (6.7ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_d3775977e3"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:88
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (1.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (19.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (35.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (3.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (26.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (4.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "adverts" CASCADE[0m
+  ↳ db/schema.rb:39
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE TABLE "adverts" ("id" bigserial primary key, "book_id" bigint NOT NULL, "seller_id" bigint, "price" decimal(10,2) NOT NULL, "condition" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:39
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE  INDEX  "index_adverts_on_book_id" ON "adverts"  ("book_id")[0m
+  ↳ db/schema.rb:39
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE  INDEX  "index_adverts_on_seller_id" ON "adverts"  ("seller_id")[0m
+  ↳ db/schema.rb:39
+  [1m[35m (10.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "books" CASCADE[0m
+  ↳ db/schema.rb:50
+  [1m[35m (11.6ms)[0m  [1m[35mCREATE TABLE "books" ("id" bigserial primary key, "isbn" character varying NOT NULL, "title" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "description" character varying, "image_link" character varying, "authors" character varying)[0m
+  ↳ db/schema.rb:50
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "orders" CASCADE[0m
+  ↳ db/schema.rb:60
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "orders" ("id" bigserial primary key, "advert_id" bigint, "buyer_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:60
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_advert_id" ON "orders"  ("advert_id")[0m
+  ↳ db/schema.rb:60
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE  INDEX  "index_orders_on_buyer_id" ON "orders"  ("buyer_id")[0m
+  ↳ db/schema.rb:60
+  [1m[35m (9.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:69
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "username" character varying, "firstname" character varying, "lastname" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:69
+  [1m[35m (18.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:69
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/schema.rb:69
+  [1m[35m (7.4ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+[0m
+  ↳ db/schema.rb:84
+  [1m[35m (3.7ms)[0m  [1m[35mALTER TABLE "adverts" ADD CONSTRAINT "fk_rails_f3a419b025"
+FOREIGN KEY ("book_id")
+  REFERENCES "books" ("id")
+[0m
+  ↳ db/schema.rb:85
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "adverts" ADD CONSTRAINT "fk_rails_e097857efb"
+FOREIGN KEY ("seller_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:86
+  [1m[35m (3.3ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_67964d5ed4"
+FOREIGN KEY ("advert_id")
+  REFERENCES "adverts" ("id")
+[0m
+  ↳ db/schema.rb:87
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "orders" ADD CONSTRAINT "fk_rails_d3775977e3"
+FOREIGN KEY ("buyer_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/schema.rb:88
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Update (0.8ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "development"], ["updated_at", "2019-08-06 09:18:55.356836"], ["key", "environment"]]
+  ↳ db/schema.rb:13
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.8ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-08-06 09:18:55.378640"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2019-08-06 19:19:08 +1000
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by ExchangeController#index as HTML
+  Rendering exchange/index.html.erb within layouts/application
+Started GET "/" for ::1 at 2019-08-06 19:19:12 +1000
+Processing by ExchangeController#index as HTML
+  Rendering exchange/index.html.erb within layouts/application
+  Rendered exchange/index.html.erb within layouts/application (4832.1ms)
+  Rendered shared/_topnav.html.erb (3.4ms)
+Completed 200 OK in 5730ms (Views: 5720.9ms | ActiveRecord: 0.0ms)
+
+
+  Rendered exchange/index.html.erb within layouts/application (1641.6ms)
+  Rendered shared/_topnav.html.erb (3.1ms)
+Completed 200 OK in 1672ms (Views: 1671.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/adverts" for ::1 at 2019-08-06 19:19:18 +1000
+Processing by AdvertsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-08-06 19:19:18 +1000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.1ms)
+  Rendered shared/_topnav.html.erb (2.3ms)
+Completed 200 OK in 66ms (Views: 46.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/books" for ::1 at 2019-08-06 19:19:18 +1000
+Processing by BooksController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2019-08-06 19:19:19 +1000
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (4.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (19.2ms)
+  Rendered shared/_topnav.html.erb (2.4ms)
+Completed 200 OK in 87ms (Views: 82.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2019-08-06 19:19:27 +1000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9OuSFqe5E2yHfqnHpMSBGhCZbZlcgnOqKI4dUhlmgqT0z/Qd+f40t8OCJ4E04DqkHavGuF6QPe5G338rPKbWrw==", "user"=>{"email"=>"chevy@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "chevy@example.com"], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 25ms (ActiveRecord: 4.2ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9OuSFqe5E2yHfqnHpMSBGhCZbZlcgnOqKI4dUhlmgqT0z/Qd+f40t8OCJ4E04DqkHavGuF6QPe5G338rPKbWrw==", "user"=>{"email"=>"chevy@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (3.7ms)
+  Rendered shared/_topnav.html.erb (1.6ms)
+Completed 200 OK in 205ms (Views: 45.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2019-08-06 19:19:29 +1000
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (1.8ms)
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (13.6ms)
+  Rendered shared/_topnav.html.erb (1.4ms)
+Completed 200 OK in 68ms (Views: 63.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2019-08-06 19:19:42 +1000
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"S0FHT7SDLNjOi4l8udXLI1FP6ZPO1b+VODXahg1p+7Pd0sy7IBQnxdm3hSgurntHKNuoAg8jaBPerAegY+YhwA==", "user"=>{"firstname"=>"123", "lastname"=>"123", "username"=>"123", "email"=>"123@123.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "123@123.com"], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "username", "firstname", "lastname", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "123@123.com"], ["encrypted_password", "$2a$11$Zcfeb2uxH0VzUUD1bf6JKuXfTdsx31I237bxvfraOs8RMfrm7TMIO"], ["username", "123"], ["firstname", "123"], ["lastname", "123"], ["created_at", "2019-08-06 09:19:42.577911"], ["updated_at", "2019-08-06 09:19:42.577911"]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Redirected to http://localhost:3000/books
+Completed 302 Found in 218ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/books" for ::1 at 2019-08-06 19:19:42 +1000
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:14
+  Rendered books/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_topnav.html.erb (4.2ms)
+Completed 200 OK in 35ms (Views: 26.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/books/new" for ::1 at 2019-08-06 19:19:45 +1000
+Processing by BooksController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering books/new.html.erb within layouts/application
+  Rendered books/new.html.erb within layouts/application (2.6ms)
+  Rendered shared/_topnav.html.erb (1.5ms)
+Completed 200 OK in 134ms (Views: 104.7ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/books" for ::1 at 2019-08-06 19:19:47 +1000
+Processing by BooksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gN2iA2rRMMpXanuvoVXgVcVShNCUjdSCs81xpM9VtDq4LvdzzgfIDPVuZ5R1tPYJciCDKQ2bm28FdoIYvCBqnA==", "book"=>{"title"=>"123"}, "commit"=>"Add"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/book.rb:17
+  [1m[36mBook Create (1.6ms)[0m  [1m[32mINSERT INTO "books" ("isbn", "title", "created_at", "updated_at", "description", "image_link", "authors") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["isbn", "9780307982032"], ["title", "Thomas' 123 Book"], ["created_at", "2019-08-06 09:19:48.758764"], ["updated_at", "2019-08-06 09:19:48.758764"], ["description", "The engines of Sodor go about their daily work schedule, in a book that counts the items each engine is carrying, from one cow to twenty whistles."], ["image_link", "http://books.google.com/books/content?id=DmxcFVyY0V8C&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["authors", "W. Awdry"]]
+  ↳ app/models/book.rb:17
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/book.rb:17
+Redirected to http://localhost:3000/books
+Completed 302 Found in 1018ms (ActiveRecord: 4.7ms)
+
+
+Started GET "/books" for ::1 at 2019-08-06 19:19:48 +1000
+Processing by BooksController#index as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering books/index.html.erb within layouts/application
+  [1m[36mBook Load (4.6ms)[0m  [1m[34mSELECT "books".* FROM "books"[0m
+  ↳ app/views/books/index.html.erb:14
+  Rendered books/index.html.erb within layouts/application (10.8ms)
+  Rendered shared/_topnav.html.erb (2.9ms)
+Completed 200 OK in 73ms (Views: 58.0ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/books/1" for ::1 at 2019-08-06 19:19:50 +1000
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (3.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/books_controller.rb:21
+  Rendering books/show.html.erb within layouts/application
+  Rendered books/show.html.erb within layouts/application (3.7ms)
+  Rendered shared/_topnav.html.erb (2.5ms)
+Completed 200 OK in 89ms (Views: 74.4ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/adverts/new?book_id=1" for ::1 at 2019-08-06 19:19:52 +1000
+Processing by AdvertsController#new as HTML
+  Parameters: {"book_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/adverts_controller.rb:10
+  Rendering adverts/new.html.erb within layouts/application
+  Rendered adverts/new.html.erb within layouts/application (9.1ms)
+  Rendered shared/_topnav.html.erb (1.3ms)
+Completed 200 OK in 123ms (Views: 45.2ms | ActiveRecord: 17.2ms)
+
+
+Started POST "/adverts" for ::1 at 2019-08-06 19:19:56 +1000
+Processing by AdvertsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VxaVvOjyu0Ixv3gaPRHacBqgmun7WmJg1iUSvHkVDz/gTz2M5sMPm2Fh7d+r4miXERA+gJXVSuAE0zPj12dRyQ==", "advert"=>{"book_id"=>"1", "seller_id"=>"1", "price"=>"123", "condition"=>"Brand New"}, "commit"=>"Post"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/advert.rb:12
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/advert.rb:12
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/models/advert.rb:12
+  [1m[36mAdvert Create (3.3ms)[0m  [1m[32mINSERT INTO "adverts" ("book_id", "seller_id", "price", "condition", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["book_id", 1], ["seller_id", 1], ["price", "123.0"], ["condition", "Brand New"], ["created_at", "2019-08-06 09:19:56.416652"], ["updated_at", "2019-08-06 09:19:56.416652"]]
+  ↳ app/models/advert.rb:12
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/advert.rb:12
+  [1m[36mActiveStorage::Attachment Load (1.4ms)[0m  [1m[34mSELECT  "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "Advert"], ["name", "cover"], ["LIMIT", 1]]
+  ↳ app/controllers/adverts_controller.rb:15
+Redirected to http://localhost:3000/adverts
+Completed 302 Found in 78ms (ActiveRecord: 9.8ms)
+
+
+Started GET "/adverts" for ::1 at 2019-08-06 19:19:56 +1000
+Processing by AdvertsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  Rendering adverts/index.html.erb within layouts/application
+  [1m[36mAdvert Load (0.5ms)[0m  [1m[34mSELECT "adverts".* FROM "adverts" ORDER BY "adverts"."created_at" DESC[0m
+  ↳ app/views/adverts/index.html.erb:14
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/adverts/index.html.erb:16
+  Rendered adverts/index.html.erb within layouts/application (8.6ms)
+  Rendered shared/_topnav.html.erb (1.5ms)
+Completed 200 OK in 35ms (Views: 32.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/adverts/1" for ::1 at 2019-08-06 19:19:58 +1000
+Processing by AdvertsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ /home/sizsan/.rvm/gems/ruby-2.6.3/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+  [1m[36mAdvert Load (0.9ms)[0m  [1m[34mSELECT  "adverts".* FROM "adverts" WHERE "adverts"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/adverts_controller.rb:20
+  Rendering adverts/show.html.erb within layouts/application
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/adverts/show.html.erb:3
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/adverts/show.html.erb:15
+  Rendered adverts/show.html.erb within layouts/application (15.6ms)
+  Rendered shared/_topnav.html.erb (1.5ms)
+Completed 200 OK in 86ms (Views: 70.9ms | ActiveRecord: 4.0ms)
+
+
