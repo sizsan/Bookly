@@ -1,4 +1,5 @@
 class AdvertsController < ApplicationController
+  before_action :authenticate_user! 
   def index
     @adverts = Advert.order_by_created
     @book = Book.all    
@@ -14,9 +15,10 @@ class AdvertsController < ApplicationController
     @advert.cover.attach(params[:advert][:cover])
     redirect_to adverts_path
   end
-
+  
   def show
     @advert = Advert.find(params[:id])
+    @seller_id = @advert.seller_id
   end
   
   def destroy
