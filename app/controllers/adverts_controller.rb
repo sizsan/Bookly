@@ -19,10 +19,6 @@ class AdvertsController < ApplicationController
     @advert = Advert.find(params[:id])
   end
   
-  def edit
-    @advert = Advert.find(Advert.advert_id(current_user,params[:id]))
-  end
-  
   def destroy
     advert_id = params[:id]
     Advert.destroy(advert_id)
