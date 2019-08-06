@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
 # For the stripe checkout
 get 'order/complete', to: 'orders#complete'
+get 'order/cancel', to: 'exchange#index'
 
 # For the destroy methods
 delete "adverts/:id", to: "adverts#destroy", as: "advert_destroy_path"
