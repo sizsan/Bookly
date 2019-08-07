@@ -71,12 +71,12 @@ Include the following:
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
 ### User Stories
-    US1 - As a User I can Post an Advert for my chosen book.
-    US2 - As a User I can search for a specfic book.
-    US3 - As a User I can view a list of books availbe for sale.
-    US4 - As a User I can order a book. 
-    US5 - As a User I can add photos to my adverts.
-    US6 - As a Seller I can delete my Adverts
+- US1 - As a User I can Post an Advert for my chosen book.
+- US2 - As a User I can search for a specfic book.
+- US3 - As a User I can view a list of books availbe for sale.
+- US4 - As a User I can order a book. 
+- US5 - As a User I can add photos to my adverts.
+- US6 - As a Seller I can delete my Adverts
 
 ### Unified Modeling Language (UML) Diagram
 ![alt text](image.jpg)
@@ -157,6 +157,7 @@ To plan this we used trello and daily meetups to ensure everyone was up to date 
 ### Methods to Protect Information and Data
 <!-- 22. Discuss methods you will use to protect information and data.
 (20 points) Discuss requirement for information security and how your project addresses them (for example, using devise for authentication/authorization). For top points, discuss other options to protect data, benefits and tradeoffs, and why you chose what you did in your project. -->
+The methods that we used to protect our data were devise, stripe, cloudinary and the credentials file provided by rails to encrypt our api keys. We chose device because it was quite easy to implement and came with its own views for signing up and loging in aswell as a few built in methods that made tailoring the UI to each individual user much simpler.    
 
 ### Legal Obligations for Data Protection
 <!-- 23. Research what your legal obligations are in relation to handling user data.
