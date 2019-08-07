@@ -32,11 +32,13 @@ Contrasting with generic marketplaces, Bookly focuses on books and allows users 
 ![alt text](image.jpg)
 
 ### Tech Stack
-- HTML
-- Sass / CSS
+- HTML5
+- Sass / CSS2
 - Bulma
 - JavaScript
+- Ruby and .erb
 - Ruby on Rails
+- PostgreSQL
 - Heroku
 
 ### Instructions to Setup, Configure and Use the App
@@ -75,10 +77,38 @@ Jack
    - Include services used to deploy your app, to upload content through your app, or to accept payment through your app (10 points)
    - List all gems used and their purpose (10 points) -->
 
-Tony
+<!-- Tony
 - Cloudinary
 - Stripe
-- Gems
+- Gems -->
+
+Bookly makes use of several third party software and services for varying purposes.
+
+#### Cloudinary
+Cloudinary provides a file upload and storage service whereby users can upload images and videos to a secure cloud storage system. By employing Cloudinary, the development team avoids having to build and maintain any infrastructure.
+
+Databases excel at storing small pieces of data in significant numbers but are not optimised to hold large chunks of data, such as media files. While it is entirely possible to store media files in a local folder when working locally, the files in said local folder cannot be uploaded when services such as Heroku are employed for deployment since they are not designed to store files long term.
+
+In configuring Bookly to integrate with Cloudinary's service, two gems were added to the application which include `cloudinary` and `activestorage-cloudinary-service`. Subsequently, Cloudinary was configured within `storage.yml` where API keys were set. Cloudinary was then set as the upload service of the application in `config/environments/production.rb`.
+
+#### Stripe
+Stripe is a complete payments platform that was integrated into Bookly in order to accept payments online via credit card. By using this third party platform, the development team can offer users unmatched convenience with security, features that are arguably essential to a marketplace application.
+
+It is an industry standard that credit card details ought not to be stored on our servers as Bookly is not compliant with the Payment Card Industry Data Security Standard, much like many other marketplaces who also use third party payment platforms.
+
+Thus, Stripe was added to Bookly in the form of a Ruby gem and a checkout session to be placed in a controller. Following the successful completion of payment, Stripe will redirect the users away from that third party service to a page on Bookly. This provides for a seamless transition between Bookly and Stripe that improves usability.
+
+#### Gems
+Aside from Cloudinary and Stripe as mentioned above, other gems were used for the development of Bookly.
+
+##### RSpec
+RSpec is a Domain Specific Language testing tool used to test Ruby code. It formed a large part of the testing process which is discussed in greater detail under **Testing Process**.
+
+##### GoogleBooks
+The GoogleBooks gem forms an essential part of Bookly's back end code where it acts as an intermediary between the Rails application and Google Books' servers. The gem queries the Google API to search for publications in the Google Books repository, having found a match it will assist the application in acquiring information on a specific book and hold a copy of that data in Bookly's own database within the `books` table.
+
+##### Devise
+Devise is a flexible authentication solution for Rails based on Warden. It was adopted as the authentication system for Bookly since it is relatively easy to integrate. The gem hashes and stores passwords in the database to validate the authenticity of a user while signing in. It is generally advisable not to store passwords in plaintext. With Devise, the development team can easily store encrypted credentials instead which further secures user data should a breach of security occur.
 
 ### Database
 
@@ -107,23 +137,26 @@ Include the following:
 
 Jack / Natalie
 
+### Unified Modeling Language (UML) Diagram
+![alt text](image.jpg)
+
+Natalie
+
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
 Tony / Natalie
 
 ### User Stories
-    US1 - As a User I can Post an Advert for my chosen book.
-    US2 - As a User I can search for a specfic book.
-    US3 - As a User I can view a list of books availbe for sale.
-    US4 - As a User I can order a book. 
-    US5 - As a User I can add photos to my adverts.
-    US6 - As a Seller I can delete my Adverts
 
-### Unified Modeling Language (UML) Diagram
-![alt text](image.jpg)
+US1 - As a User I can Post an Advert for my chosen book.
+US2 - As a User I can search for a specfic book.
+US3 - As a User I can view a list of books availbe for sale.
+US4 - As a User I can order a book. 
+US5 - As a User I can add photos to my adverts.
+US6 - As a Seller I can delete my Adverts
 
-Natalie
+
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
