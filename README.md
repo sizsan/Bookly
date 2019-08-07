@@ -13,6 +13,7 @@ Group members:
 
 ## Description
 ### Problem definition / purpose
+    When brainstoming for this applicatio we notcied that there was a lack of online book exchanges. 
 ### Functionality / features
 ### Screenshots
 ### Tech Stack (e.g. html, css, deployment platform, etc)
