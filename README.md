@@ -26,17 +26,41 @@ Starting from its humble beginnings, targeting students, the development team of
 <!-- 3. Describe the project you will be conducting and how your App will address the needs. -->
 The driving influence and philosophy behind Bookly is to focus on one purpose and to excel at that purpose. A marketplace on which people can exchange books is simple in design but incredibly difficult to implement with many minor considerations that affect the user experience and overall quality of the product.
 
-Contrasting with generic marketplaces, Bookly focuses on books and allows users to list books for sale or place an order with minimal impediments. A user need not spend more time than necessary in order to list a book as being for sale. Similarly, a user will find very few steps in between logging in to Bookly and placing an order for a book that they have just found. This straightforward implementation resolves any qualms that someone might have in navigating a more convoluted marketplace competitor in achieving the same objective as on Bookly.
+Contrasting with generic marketplaces, Bookly focuses on books and allows users to list books for sale or place an order with minimal impediments. A user need not spend more time than necessary in order to list a book as being for sale. Similarly, a user will find very few steps in between logging in to Bookly and placing an order for a book that they have just found. This straightforward implementation resolves any qualms that a user might have in navigating a more convoluted marketplace competitor in achieving the same objective as on Bookly.
 
 ### Screenshots
 ![alt text](image.jpg)
 
 ### Tech Stack
-
-
-#### Heroku
+- HTML
+- Sass / CSS
+- Bulma
+- JavaScript
+- Ruby on Rails
+- Heroku
 
 ### Instructions to Setup, Configure and Use the App
+
+Installing Ruby:
+1. Ensure Ruby is installed by entering the following command in Terminal: `ruby --version`
+    - If a valid Ruby version is not returned, refer to the following link to install Ruby for your operating system: https://www.ruby-lang.org/en/downloads/
+
+Downloading the application:
+1. Navigate to the GitHub repository as linked above; and
+2. Either **clone** or **download ZIP** of the application.
+
+Ensuring required gems are installed:
+1. Ensure you have **Bundler** installed by opening Terminal and entering the following command:  `bundler --version`
+    - If Bundler is not installed and an error is returned, enter the following command to install: `gem install bundler`
+2. Navigate to the root directory of the application and install the required gems with: `bundle install`
+
+Database setup:
+1. Bookly's repository contains the default database configuration in `database.example.yml`.
+2. Ensure your Terminal's path is in `/Bookly/config` and enter the following command to copy the contents of this default configuration into a separate file to be used by Rails: `cp database.example.yml database.yml`
+3. If necessary, change the settings within `database.yml` to match the credentials of your PostgreSQL setup.
+
+Running the Application on your localhost
+1. Ensure you are in the application's root directory and enter the following command to run the application within your browswer: `rails server`
 
 ### Network Infrastructure
 <!-- 4. Describe the network infrastructure the App may be based on.
