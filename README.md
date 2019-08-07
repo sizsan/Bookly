@@ -71,7 +71,12 @@ Include the following:
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
 ### User Stories
-<!-- 15. Provide User stories for your App. -->
+    US1 - As a User I can Post an Advert for my chosen book.
+    US2 - As a User I can search for a specfic book.
+    US3 - As a User I can view a list of books availbe for sale.
+    US4 - As a User I can order a book. 
+    US5 - As a User I can add photos to my adverts.
+    US6 - As a Seller I can delete my Adverts
 
 ### Unified Modeling Language (UML) Diagram
 ![alt text](image.jpg)
