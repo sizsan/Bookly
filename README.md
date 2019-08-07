@@ -60,13 +60,15 @@ Database Setup:
 3. If necessary, change the settings within `database.yml` to match the credentials of your PostgreSQL setup.
 
 Running the Application on your localhost
-1. Ensure you are in the application's root directory and enter the following command to run the application within your browswer: `rails server`
+1. Ensure you are in the application's root directory and enter the following command to run the application within your browser: `rails server`
 
 ### Network Infrastructure
 <!-- 4. Describe the network infrastructure the App may be based on.
-https://devcenter.heroku.com/articles/http-routing -->
-
-Jack
+https://devcenter.heroku.com/articles/http-routing 
+https://devcenter.heroku.com/articles/dynos
+https://www.heroku.com/dynos-->
+For this application we used Heroku for our HTTP routing. We chose this cloud service as it handles all of our routing for us through the use of web, worker and one-off dynos. Heroku handles incoming requests by sending them to a load balancer that offers SSL (Secure Socket Layer) termination, from there the request is sent to a router which then determines where the web dynos for the application will be located. Once a web dyno has been selected the router established a TCP connection with then dyno then forwards the HTTP request to said dyno. Once the web dyno has received the HTTP request the request is put into a queue and the web dyno returns a success message to the user. Then a worker dyno picks up the request and runs any process defined in the users procfile that aren't defines as 'web'. The worker dynos then return a result and then saves to a database.
+<!--Jack-->
 
 ### Third Party Software and Services
 <!-- 5. Identify and describe the software to be used in your App.
@@ -75,7 +77,7 @@ Jack
    - Include services used to deploy your app, to upload content through your app, or to accept payment through your app (10 points)
    - List all gems used and their purpose (10 points) -->
 
-Tony
+<!--Tony-->
 - Cloudinary
 - Stripe
 - Gems
@@ -84,14 +86,14 @@ Tony
 
 #### Database Selection
 <!-- 6. Identify the database to be used in your App and provide a justification for your choice. -->
+For this project we decided to use PostgreSQL to manage our database. The initial reason for this decision was that everyone in our development team already had a familiarity with PostgreSQL and its application to rails. Furthermore upon further examination of PostgreSQL we discovered that it was our one of the most advanced database management systems available. The pros of Postgres being that it is flexible, highly extensible, and offers strong security. Postgres allows the us to set specific parameters this means that we were able to put custom limits on fields that required a users input. Another great feature that postgres offers is that it is highly extensible, enabling us to make continuous changes to our database for exmaple if we wanted to add a new datatype we can do that through postgres simply by asking it to create an extension. Postgres also offer great security features, it provides parameter security as well as app security. Another arguably great thing about postgres is that is an open source project meaning that if were to run into a problem there is a vibrant and independent community to aid us. On the other hand Postgres has some draw backs when compared to newer NoSQL databases. The drawbacks being that ot hasa slower performance and is very strict towards querying data. However for the purposes of this application the pros far out wiegh the cons.
 
-Jack
-- Write about pros and cons of PostgreSQL as compared to other SQL database systems
+<!--Jack-->
 
 #### Production Database Setup
 <!-- 7. Identify and describe the production database setup (i.e. postgres instance). -->
-
-Jack
+   
+<!--Jack-->
 
 ## Design Documentation
 
@@ -105,31 +107,31 @@ Include the following:
 -A diagram showing the high level components, how the user interacts with those components, and how they interact with each other (10 points)
 -A brief description of each high level component (10 points) -->
 
-Jack / Natalie
+<!--Natalie-->
 
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
-Tony / Natalie
+<!--Tony / Natalie-->
 
 ### User Stories
-- US1 - As a User I can Post an Advert for my chosen book.
+- US1 - As a User I can post an advert for my chosen book.
 - US2 - As a User I can search for a specfic book.
 - US3 - As a User I can view a list of books availbe for sale.
 - US4 - As a User I can order a book. 
 - US5 - As a User I can add photos to my adverts.
-- US6 - As a Seller I can delete my Adverts
+- US6 - As a Seller I can delete my adverts
 
 ### Unified Modeling Language (UML) Diagram
 ![alt text](image.jpg)
 
-Natalie
+<!--Natalie-->
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
 ![alt text](image.jpg)
 
-Natalie
+<!--Natalie-->
 
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
@@ -188,17 +190,17 @@ To plan this we used trello and daily meetups to ensure everyone was up to date 
 ### Agile Methodology
 <!-- 18. Discuss how Agile methodology is being implemented in your project. -->
 
-Natalie
+<!--Natalie-->
 
 ### Source Control
 <!-- 19. Provide an overview and description of your Source control process. -->
 
-Tony
+<!--Tony-->
 
 ### Testing Process
 <!-- 20. Provide an overview and description of your Testing process. -->
 
-Tony
+<!--Tony-->
 
 ## Information Security and User Data
 
@@ -206,20 +208,22 @@ Tony
 <!-- 21. Discuss and analyse requirements related to information system security.
 (30 points) Discuss information security requirements and discuss what you will do to address those requirements, or would do in a future release of the application (beyond MVP) -->
 
-Jack
+<!--Jack-->
 
 ### Methods to Protect Information and Data
 <!-- 22. Discuss methods you will use to protect information and data.
 (20 points) Discuss requirement for information security and how your project addresses them (for example, using devise for authentication/authorization). For top points, discuss other options to protect data, benefits and tradeoffs, and why you chose what you did in your project. -->
-The methods that we used to protect our data were devise, stripe, cloudinary and the credentials file provided by rails to encrypt our api keys. We chose device because it was quite easy to implement and came with its own views for signing up and loging in aswell as a few built in methods that made tailoring the UI to each individual user much simpler.    
+The methods that we used to protect our data were devise, stripe, heroku, cloudinary and the credentials file provided by rails to encrypt our api keys. We chose device because it was quite easy to implement and came with its own views for signing up and loging in aswell as a few built in methods that made tailoring the UI to each individual user much simpler.    
 
-Jack
+- SSL termination for Heroku (sends encrypted data between the user and the server)
+
+<!--Jack-->
 
 ### Legal Obligations for Data Protection
 <!-- 23. Research what your legal obligations are in relation to handling user data.
 (10 points) Research legal obligations for data protection and discuss. One place to look is GDPR requirements (there is a unit in canvas) -->
 
-Tony
+<!--Tony-->
 
 ## Database design
 <!-- (90 points) Discuss design of the database and data structures in the README 
@@ -230,7 +234,7 @@ Include: -->
    - Provide a description of relational databases and what is important in relational database design (10 points)
    - Discuss how your design takes into account relational database design practices, including normalisation (10 points) -->
 
-- Natalie
+<!--Natalie-->
 
 ### Database Entity Relationship Diagram
 <!-- 14. Provide your database schema design.
@@ -238,14 +242,14 @@ Include: -->
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
 
-Natalie
+<!--Natalie-->
 
 ### Database Entities
 <!-- 3 (20 points) Description of database entities
    - Define the entities in your ERD and how they are used in your app (10 points)
    - Describe the fields of the entities in the ERD, including data types, default values, required vs. optional, primary keys, and reasons for choices made on these items (10 points) -->
 
-Natalie
+<!--Natalie-->
 
 ### Database Relations
 <!-- 12. Discuss the database relations to be implemented.
@@ -253,14 +257,14 @@ Natalie
    - Identify relationships used including the type of relationships, as shown in the ERD (10 points)
    - Discuss why the chosen relationships are used including any alternatives considered (10 points) -->
 
-Tony
+<!--Tony-->
 
 ### Database Models
 <!-- 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
 5 (10 points) Model discussion
    - Describe how models will implement the relationships given in the database design with ActiveRecord associations" -->
 
-Jack
+<!--Jack-->
 
 ___
 
