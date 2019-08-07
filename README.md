@@ -68,6 +68,14 @@ Include the following:
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
+
+#### Desktop
+![alt text](image.jpg)
+
+#### Tablet
+![alt text](image.jpg)
+
+#### Mobile
 ![alt text](image.jpg)
 
 ## Planning Process
