@@ -32,8 +32,8 @@ Contrasting with generic marketplaces, Bookly focuses on books and allows users 
 ![alt text](image.jpg)
 
 ### Tech Stack
-- HTML5
-- Sass / CSS2
+- HTML
+- Sass / CSS
 - Bulma
 - JavaScript
 - Ruby and .erb
