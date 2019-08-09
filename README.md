@@ -105,8 +105,8 @@ Include the following:
 -A diagram showing the high level components, how the user interacts with those components, and how they interact with each other (10 points)
 -A brief description of each high level component (10 points) -->
 
-### Unified Modeling Language (UML) Diagram
-![alt text](image.jpg)
+### User Journey Workflow
+![User Journey Workflow](image.jpg)
 
 Natalie
 
@@ -125,15 +125,13 @@ US6 - As a Seller I can delete my Adverts.
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
-
+Natalie
 #### Desktop
-![alt text](image.jpg)
-
+![Desktop Wireframes](image.jpg)
 #### Tablet
-![alt text](image.jpg)
-
+![Tablet Wireframes](image.jpg)
 #### Mobile
-![alt text](image.jpg)
+![Mobile Wireframes](image.jpg)
 
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
@@ -240,9 +238,8 @@ Include: -->
 2 (20 points) ERD
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
-
-Tony - Diagram
-Natalie
+ERD complete?
+![ERD](image.jpg)
 
 ### Database Entities
 <!-- 3 (20 points) Description of database entities
