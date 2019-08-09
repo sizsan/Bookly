@@ -226,7 +226,15 @@ Natalie
 ### Source Control
 <!-- 19. Provide an overview and description of your Source control process. -->
 
-Tony
+Source control proved to be one of the more challenging aspects during the development of Bookly. The group members all lacked experience in working with teams of more than two, thus the early stages of planning largely consisted of establishing a consistent workflow that all members had to abide by.
+
+The consensus largely consisted of opinions favouring the Feature Branch Workflow. As the workflow used by many companies for in-house development, the Feature Branch Workflow favours the idea that all feature development take place in a feature branch instead of the `master` branch. This workflow ensures that the main codebase remains undisturbed while multiple developers are working on a particular feature.
+
+Basic source control process as followed by the team:
+1. Having ensured that the master branch is up to date with `git pull origin master`, create and checkout to a new branch with `git checkout -b <branch>`;
+2. After completing changes of the branch, add and commit those changes on the local repository, then push them to the branch with `git push origin <branch>`;
+3. The author of those changes create a pull request on GitHub, requesting a review by the other two developers;
+4. Once reviewed by the other developers, one of those parties will then merge those changes with `master`.
 
 ### Testing Process
 <!-- 20. Provide an overview and description of your Testing process. -->
