@@ -130,6 +130,7 @@ Jack
 ## Design Documentation
 
 ### Design Process
+<!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? Or not required? -->
 
 ### Arhitecture and High-Level Design
 <!-- 8. Describe the architecture of your App.
@@ -139,12 +140,29 @@ Include the following:
 -A diagram showing the high level components, how the user interacts with those components, and how they interact with each other (10 points)
 -A brief description of each high level component (10 points) -->
 
-Jack / Natalie
+#### User Journey Workflow
+![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
-### Unified Modeling Language (UML) Diagram
-![alt text](image.jpg)
+#### Components
 
-Natalie
+##### Users
+A user can sign up and must be logged in to buy or sell books. Once logged in a user can:
+-	View a list of books
+-	Add a new book to the list
+-	Select a book to sell
+-	Create an advert
+-	Delete an advert that they have created
+-	View adverts placed by other users
+-	Complete an order to buy a book from another user
+
+##### Books
+A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
+
+##### Adverts
+An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
+
+##### Orders
+An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
 
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
@@ -157,20 +175,22 @@ In terms of payment, eBay employs PayPal as its payment gateway much like Bookly
 
 ### User Stories
 
-US1 - As a User I can Post an Advert for my chosen book.
-US2 - As a User I can search for a specfic book.
-US3 - As a User I can view a list of books availbe for sale.
-US4 - As a User I can order a book. 
-US5 - As a User I can add photos to my adverts.
-US6 - As a Seller I can delete my Adverts
-
-
+- US1 - As a User I can post an advert for my chosen book.
+- US2 - As a User I can search for a specific book.
+- US3 - As a User I can view a list of books available for sale.
+- US4 - As a User I can order a book. 
+- US5 - As a User I can add photos to my adverts.
+- US6 - As a Seller I can delete my adverts.
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
-![alt text](image.jpg)
-
 Natalie
+#### Desktop
+![Desktop Wireframes](image.jpg)
+#### Tablet
+![Tablet Wireframes](image.jpg)
+#### Mobile
+![Mobile Wireframes](image.jpg)
 
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
@@ -233,8 +253,11 @@ The development team constantly communicated with each other every day on Slack.
 
 ### Agile Methodology
 <!-- 18. Discuss how Agile methodology is being implemented in your project. -->
+The team has endeavoured to implement an Agile method of development for this project, which is considered to be a more flexible and iterative approach. Being a small team, there was regular communication in person, as well as via Slack, Trello and GitHub. Establishing user stories helped to define the minimum viable product. Development and testing were completed concurrently, which meant the team could make necessary adjustments to ensure the project remained on track to meet the MVP requirements.
 
-Natalie
+As was mentioned previously, initially the team intended to create an app dedicated to the exchange of text books specifically, and the user stories were written in that regard. However, as development progressed it was agreed that the app could have wider appeal if it was not limited to text books alone. The implementation of Google Books allowed the user to add any book title, and so the team agreed to expand the scope of the app to be a book exchange, for all books.
+
+Throughout development, feedback was welcomed among team members.  Minor changes were implemented where it was considered beneficial and viable.  Where ideas fell significantly outside the scope of the MVP, they were recorded in Trello to be considered in future extensions of the project.
 
 ### Source Control
 <!-- 19. Provide an overview and description of your Source control process. -->
@@ -712,7 +735,7 @@ Most relevantly, the controller must implement appropriate technical and organis
 
 Bookly, by design, collects a minimal amount of information to process orders. In order to use Bookly, a user must sign up for an account which will request first name, last name, username, email and password. Of these, last name and username are optional fields. Email and password are used for security and authentication purposes while first name is used for personalised prompts and messages. The development team stress that they are committed to open and transparent management of user data, information such as passwords are encrypted and not visible even to the developers themselves.
 
-## Database design
+## Database Design
 <!-- (90 points) Discuss design of the database and data structures in the README 
 Include: -->
 
@@ -728,15 +751,30 @@ Include: -->
 2 (20 points) ERD
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
-
-Natalie
+![Entity Relationship Diagram](docs/entity_relationship_diagram.png "Entity Relationship Diagram")
 
 ### Database Entities
 <!-- 3 (20 points) Description of database entities
    - Define the entities in your ERD and how they are used in your app (10 points)
    - Describe the fields of the entities in the ERD, including data types, default values, required vs. optional, primary keys, and reasons for choices made on these items (10 points) -->
 
-Natalie
+Define entities
+How are they used in the app?
+Describe fields:
+- data types
+- default values
+- required vs optional
+- primary keys
+- reasons for choices
+
+#### Users
+
+#### Books
+
+#### Adverts
+
+#### Orders
+
 
 ### Database Relations
 <!-- 12. Discuss the database relations to be implemented.
@@ -776,26 +814,26 @@ Jack
 ___
 
 ## Short Answer Questions
-1. What is the need (i.e. challenge) that you will be addressing in your project?
-2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
-3. Describe the project you will be conducting and how your App will address the needs.
-4. Describe the network infrastructure the App may be based on.
-5. Identify and describe the software to be used in your App.
-6. Identify the database to be used in your App and provide a justification for your choice.
-7. Identify and describe the production database setup (i.e. postgres instance).
-8. Describe the architecture of your App.
-9. Explain the different high-level components (abstractions) in your App.
-10. Detail any third party services that your App will use.
-11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
-12. Discuss the database relations to be implemented.
-13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
-14. Provide your database schema design.
-15. Provide User stories for your App.
-16. Provide Wireframes for your App.
-17. Describe the way tasks are allocated and tracked in your project.
-18. Discuss how Agile methodology is being implemented in your project.
-19. Provide an overview and description of your Source control process.
-20. Provide an overview and description of your Testing process.
-21. Discuss and analyse requirements related to information system security.
-22. Discuss methods you will use to protect information and data.
-23. Research what your legal obligations are in relation to handling user data.
+>1. What is the need (i.e. challenge) that you will be addressing in your project?
+>2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
+>3. Describe the project you will be conducting and how your App will address the needs.
+>4. Describe the network infrastructure the App may be based on.
+>5. Identify and describe the software to be used in your App.
+>6. Identify the database to be used in your App and provide a justification for your choice.
+>7. Identify and describe the production database setup (i.e. postgres instance).
+>8. Describe the architecture of your App.
+>9. Explain the different high-level components (abstractions) in your App.
+>10. Detail any third party services that your App will use.
+>11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
+>12. Discuss the database relations to be implemented.
+>13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
+>14. Provide your database schema design.
+>15. Provide User stories for your App.
+>16. Provide Wireframes for your App.
+>17. Describe the way tasks are allocated and tracked in your project.
+>18. Discuss how Agile methodology is being implemented in your project.
+>19. Provide an overview and description of your Source control process.
+>20. Provide an overview and description of your Testing process.
+>21. Discuss and analyse requirements related to information system security.
+>22. Discuss methods you will use to protect information and data.
+>23. Research what your legal obligations are in relation to handling user data.
