@@ -130,9 +130,8 @@ Jack
 ## Design Documentation
 
 ### Design Process
-<!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? Or not required? -->
 1. Formulate required data as models and their entities;
-2. Establish relations between those models in order to maximise effiency and reduce reputation in data;
+2. Establish relations between those models in order to maximise efficiency and reduce reputation in data;
 3. Define methods within the model to determine how that data is passed to the controller;
 4. Create controller actions where required to interact with database and views; and
 5. Create views to display that data to the end user.
@@ -183,6 +182,10 @@ In terms of payment, eBay employs PayPal as its payment gateway much like Bookly
 - US5 - As a User I can add photos to my adverts.
 - US6 - As a Seller I can delete my adverts.
 
+<!-- Should we move user journey workflow diagram to here now perhaps? -->
+<!-- ### User Journey Workflow
+![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow") -->
+
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
 Natalie
@@ -196,14 +199,14 @@ Natalie
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
 
-To plan this we used Trello and daily standups to ensure everyone was up to date and knew what their task for the day was.
+To plan this the team used Trello and daily standups to ensure everyone was up to date and knew what their task for the day was.
 
 ### Project Plan & Timeline
 
 #### Week 1
 
 ##### Day 1
-- Settle on an idea for our marketplace application
+- Settle on an idea for the marketplace application
 - Begin skeletons of the App, README, ERD, Trello
 - Implement a CSS framework (i.e. Bulma)
 
