@@ -131,8 +131,13 @@ Jack
 
 ### Design Process
 <!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? Or not required? -->
+1. Formulate required data as models and their entities;
+2. Establish relations between those models in order to maximise effiency and reduce reputation in data;
+3. Define methods within the model to determine how that data is passed to the controller;
+4. Create controller actions where required to interact with database and views; and
+5. Create views to display that data to the end user.
 
-### Arhitecture and High-Level Design
+### Architecture and High-Level Design
 <!-- 8. Describe the architecture of your App.
 9. Explain the different high-level components (abstractions) in your App.
 (20 points) Describe the high level components of your app and how they work together.
@@ -140,29 +145,25 @@ Include the following:
 -A diagram showing the high level components, how the user interacts with those components, and how they interact with each other (10 points)
 -A brief description of each high level component (10 points) -->
 
+![Architecture](docs/high_level_architecture.png)
+
+As seen in the above visualisation, the high-level components of Bookly can be broken into three broad categories of models, views and controllers as per the MVC architecture. The architecture has been framed as a part of the workflow in order to better demonstrate the different components being used at various stages.
+
+The `User` model is the first component that a user will interact with, where they are prompted to create an account before they can access the application's features. Here, the `User` model determines the form in which inputted data is saved into the database. Once validated by the model, that data is saved into the `Users` table witin the database.
+
+When a user attempts to add a book to Bookly, they will search for a book which triggers the `Book` model. Within the model is a method by which the `GoogleBooks` gem queries the Google Books servers to return the first result. Specifically, a book's title, description, authors, ISBN and a link to the cover image are pulled from said servers. Consequently, the `Books` controller saves that data into the database.
+
+When the user clicks on the book that was just added, the `Books` controller will accept the ID of the book as a parameter and pull a book from the database which matches that parameter. That information is passed from the database, through the controller, to the view where it is displayed to the user.
+
+Should the user click to sell the book as displayed in the view, the `Adverts` controller will obtain the ID of the book as a foreign key and create a new object within the `adverts` table of the database. The data in that `adverts` table is conversely passed to the `Adverts` controller where it is then displayed to the user in the view.
+
+If the user clicks on the advert, the ID of the advert is passed through to the `Adverts` controller where the view will display that selected advert.
+
+Once the user attempts to order the book within that advert, the ID of the advert will be passed to the `Orders` controller which redirects that information to Stripe in order to process payment. Once payment is completed, the `Orders` controller is again tasked with routing the user to the completion page. Here, the relevant view displays a completion prompt to the user.
+
 #### User Journey Workflow
 ![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
-#### Components
-
-##### Users
-A user can sign up and must be logged in to buy or sell books. Once logged in a user can:
--	View a list of books
--	Add a new book to the list
--	Select a book to sell
--	Create an advert
--	Delete an advert that they have created
--	View adverts placed by other users
--	Complete an order to buy a book from another user
-
-##### Books
-A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
-
-##### Adverts
-An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
-
-##### Orders
-An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
 
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
@@ -195,7 +196,7 @@ Natalie
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
 
-To plan this we used trello and daily meetups to ensure everyone was up to date and knew what their task for the day was.
+To plan this we used Trello and daily standups to ensure everyone was up to date and knew what their task for the day was.
 
 ### Project Plan & Timeline
 
@@ -766,6 +767,25 @@ Describe fields:
 - required vs optional
 - primary keys
 - reasons for choices
+
+##### Users
+A user can sign up and must be logged in to buy or sell books. Once logged in a user can:
+-	View a list of books
+-	Add a new book to the list
+-	Select a book to sell
+-	Create an advert
+-	Delete an advert that they have created
+-	View adverts placed by other users
+-	Complete an order to buy a book from another user
+
+##### Books
+A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
+
+##### Adverts
+An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
+
+##### Orders
+An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
 
 #### Users
 
