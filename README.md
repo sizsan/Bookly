@@ -160,10 +160,6 @@ If the user clicks on the advert, the ID of the advert is passed through to the 
 
 Once the user attempts to order the book within that advert, the ID of the advert will be passed to the `Orders` controller which redirects that information to Stripe in order to process payment. Once payment is completed, the `Orders` controller is again tasked with routing the user to the completion page. Here, the relevant view displays a completion prompt to the user.
 
-#### User Journey Workflow
-![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
-
-
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
@@ -182,9 +178,9 @@ In terms of payment, eBay employs PayPal as its payment gateway much like Bookly
 - US5 - As a User I can add photos to my adverts.
 - US6 - As a Seller I can delete my adverts.
 
-<!-- Should we move user journey workflow diagram to here now perhaps? -->
-<!-- ### User Journey Workflow
-![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow") -->
+<!-- Now that we have MVC diagram above, should we move user journey workflow diagram back to here now perhaps? This is where is was listed in canvas. -->
+### User Journey Workflow
+![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
