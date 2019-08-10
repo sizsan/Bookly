@@ -105,7 +105,26 @@ Include the following:
 -A diagram showing the high level components, how the user interacts with those components, and how they interact with each other (10 points)
 -A brief description of each high level component (10 points) -->
 
-### User Journey Workflow
+Users:
+A user can sign up and must be logged in to buy or sell books. Once logged in a user can:
+-	View a list of books
+-	Add a new book to the list
+-	Select a book to sell
+-	Create an advert
+-	Delete an advert that they have created
+-	View adverts placed by other users
+-	Complete an order to buy a book from another user
+
+Books:
+A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
+
+Adverts:
+An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
+
+Orders:
+An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
+
+#### User Journey Workflow
 ![User Journey Workflow](image.jpg)
 
 Natalie
@@ -238,7 +257,6 @@ Include: -->
 2 (20 points) ERD
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
-ERD complete?
 ![ERD](image.jpg)
 
 ### Database Entities
