@@ -218,6 +218,11 @@ To plan this we used trello and daily meetups to ensure everyone was up to date 
 ### Trello Board
 ![alt text](image.jpg)
 
+### Communication
+The development team constantly communicated with each other every day on Slack.
+
+![Slack Chat](docs/communication.gif)
+
 ### Agile Methodology
 <!-- 18. Discuss how Agile methodology is being implemented in your project. -->
 
