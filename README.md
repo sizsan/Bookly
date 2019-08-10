@@ -36,7 +36,9 @@ Contrasting with generic marketplaces, Bookly focuses on books and allows users 
 - Sass / CSS
 - Bulma
 - JavaScript
+- Ruby and .erb
 - Ruby on Rails
+- PostgreSQL
 - Heroku
 
 ### Instructions to Setup, Configure and Use the App
@@ -75,10 +77,38 @@ Jack
    - Include services used to deploy your app, to upload content through your app, or to accept payment through your app (10 points)
    - List all gems used and their purpose (10 points) -->
 
-Tony
+<!-- Tony
 - Cloudinary
 - Stripe
-- Gems
+- Gems -->
+
+Bookly makes use of several third party software and services for varying purposes.
+
+#### Cloudinary
+Cloudinary provides a file upload and storage service whereby users can upload images and videos to a secure cloud storage system. By employing Cloudinary, the development team avoids having to build and maintain any infrastructure.
+
+Databases excel at storing small pieces of data in significant numbers but are not optimised to hold large chunks of data, such as media files. While it is entirely possible to store media files in a local folder when working locally, the files in said local folder cannot be uploaded when services such as Heroku are employed for deployment since they are not designed to store files long term.
+
+In configuring Bookly to integrate with Cloudinary's service, two gems were added to the application which include `cloudinary` and `activestorage-cloudinary-service`. Subsequently, Cloudinary was configured within `storage.yml` where API keys were set. Cloudinary was then set as the upload service of the application in `config/environments/production.rb`.
+
+#### Stripe
+Stripe is a complete payments platform that was integrated into Bookly in order to accept payments online via credit card. By using this third party platform, the development team can offer users unmatched convenience with security, features that are arguably essential to a marketplace application.
+
+It is an industry standard that credit card details ought not to be stored on our servers as Bookly is not compliant with the Payment Card Industry Data Security Standard, much like many other marketplaces who also use third party payment platforms.
+
+Thus, Stripe was added to Bookly in the form of a Ruby gem and a checkout session to be placed in a controller. Following the successful completion of payment, Stripe will redirect the users away from that third party service to a page on Bookly. This provides for a seamless transition between Bookly and Stripe that improves usability.
+
+#### Gems
+Aside from Cloudinary and Stripe as mentioned above, other gems were used for the development of Bookly.
+
+##### RSpec
+RSpec is a Domain Specific Language testing tool used to test Ruby code. It formed a large part of the testing process which is discussed in greater detail under **Testing Process**.
+
+##### GoogleBooks
+The GoogleBooks gem forms an essential part of Bookly's back end code where it acts as an intermediary between the Rails application and Google Books' servers. The gem queries the Google API to search for publications in the Google Books repository, having found a match it will assist the application in acquiring information on a specific book and hold a copy of that data in Bookly's own database within the `books` table.
+
+##### Devise
+Devise is a flexible authentication solution for Rails based on Warden. It was adopted as the authentication system for Bookly since it is relatively easy to integrate. The gem hashes and stores passwords in the database to validate the authenticity of a user while signing in. It is generally advisable not to store passwords in plaintext. With Devise, the development team can easily store encrypted credentials instead which further secures user data should a breach of security occur.
 
 ### Database
 
@@ -107,23 +137,26 @@ Include the following:
 
 Jack / Natalie
 
+### Unified Modeling Language (UML) Diagram
+![alt text](image.jpg)
+
+Natalie
+
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
 Tony / Natalie
 
 ### User Stories
-    US1 - As a User I can Post an Advert for my chosen book.
-    US2 - As a User I can search for a specfic book.
-    US3 - As a User I can view a list of books availbe for sale.
-    US4 - As a User I can order a book. 
-    US5 - As a User I can add photos to my adverts.
-    US6 - As a Seller I can delete my Adverts
 
-### Unified Modeling Language (UML) Diagram
-![alt text](image.jpg)
+US1 - As a User I can Post an Advert for my chosen book.
+US2 - As a User I can search for a specfic book.
+US3 - As a User I can view a list of books availbe for sale.
+US4 - As a User I can order a book. 
+US5 - As a User I can add photos to my adverts.
+US6 - As a Seller I can delete my Adverts
 
-Natalie
+
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
@@ -185,6 +218,11 @@ To plan this we used trello and daily meetups to ensure everyone was up to date 
 ### Trello Board
 ![alt text](image.jpg)
 
+### Communication
+The development team constantly communicated with each other every day on Slack.
+
+![Slack Chat](docs/communication.gif)
+
 ### Agile Methodology
 <!-- 18. Discuss how Agile methodology is being implemented in your project. -->
 
@@ -193,12 +231,416 @@ Natalie
 ### Source Control
 <!-- 19. Provide an overview and description of your Source control process. -->
 
-Tony
+Source control proved to be one of the more challenging aspects during the development of Bookly. The group members all lacked experience in working with teams of more than two, thus the early stages of planning largely consisted of establishing a consistent workflow that all members had to abide by.
+
+The consensus largely consisted of opinions favouring the Feature Branch Workflow. As the workflow used by many companies for in-house development, the Feature Branch Workflow favours the idea that all feature development take place in a feature branch instead of the `master` branch. This workflow ensures that the main codebase remains undisturbed while multiple developers are working on a particular feature.
+
+Basic source control process as followed by the team:
+1. Having ensured that the master branch is up to date with `git pull origin master`, create and checkout to a new branch with `git checkout -b <branch>`;
+2. After completing changes of the branch, add and commit those changes on the local repository, then push them to the branch with `git push origin <branch>`;
+3. The author of those changes create a pull request on GitHub, requesting a review by the other two developers;
+4. Once reviewed by the other developers, one of those parties will then merge those changes with `master`.
 
 ### Testing Process
 <!-- 20. Provide an overview and description of your Testing process. -->
 
-Tony
+The development team of Bookly underwent a thorough testing process that constantly ensured the quality and integrity of the application remain intact. Testing consisted of both manual testing and unit testing.
+
+#### Manual Testing
+The development team executed manual test cases to discover bugs in the Rails application. Manual testing is a necessity as it allows developers to understand the feasibility of automated testing. In the case of Bookly, the developers continually tested each component of the application as they were being created, whether it be the controllers, models or views. A record of the manual testing process can be found below.
+
+![Manual Testing](docs/manual_testing.png "Manual Testing Spreadsheet")
+
+#### Unit Testing
+Unit testing consists of testing individual components of the application but differs from manual testing in that it is often automated. RSpec, the behaviour-driven development framework, was used for this project to ensure that all components matched a consistent design as defined in the test files. The output of said automated tests can be found below.
+
+```ruby
+
+===================================
+Tue 30 Jul 23:20:15 AEST 2019
+===================================
+
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new questions with correct fields
+
+User
+  creates a new user with correct fields
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+Finished in 0.07638 seconds (files took 0.84083 seconds to load)
+11 examples, 0 failures
+
+
+
+===================================
+Wed 31 Jul 11:12:23 AEST 2019
+===================================
+
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Books
+  GET /books
+    works!
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 1.91 seconds (files took 0.87056 seconds to load)
+19 examples, 0 failures
+
+
+
+===================================
+Mon 5 Aug 15:59:30 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 2.8 seconds (files took 0.84801 seconds to load)
+38 examples, 0 failures
+
+
+
+===================================
+Mon 5 Aug 22:06:24 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+adverts/index
+  renders a list of adverts
+
+adverts/new
+  renders new advert form
+
+adverts/show
+  renders attributes in <p>
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 3.6 seconds (files took 0.84266 seconds to load)
+41 examples, 0 failures
+
+
+
+===================================
+Tue 6 Aug 09:37:14 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+Order
+  creates new orders with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+Orders
+  GET /orders
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+OrdersController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+adverts/index
+  renders a list of adverts
+
+adverts/new
+  renders new advert form
+
+adverts/show
+  renders attributes in <p>
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 3.66 seconds (files took 0.84835 seconds to load)
+51 examples, 0 failures
+```
 
 ## Information Security and User Data
 
@@ -218,7 +660,49 @@ Jack
 <!-- 23. Research what your legal obligations are in relation to handling user data.
 (10 points) Research legal obligations for data protection and discuss. One place to look is GDPR requirements (there is a unit in canvas) -->
 
-Tony
+#### *Privacy Act 1988*
+
+Australian businesses have been primarily governed by the *Privacy Act 1988* ("the Act") since an amendment was passed in 2000. The Act contains the 13 Australian Privacy Principles (APPs) which are the cornerstone of the privacy protection framework.
+
+As summarised by the [Office of the Australian Information Commissioner](https://oaic.gov.au/privacy/australian-privacy-principles/), the APPs govern the standards, rights and obligations around:
+- the collection, use and disclosure of personal information;
+- an organisation or agency’s governance and accountability;
+- integrity and correction of personal information; and
+- the rights of individuals to access their personal information.
+
+##### Our Obligations under Australian Law
+Section 16 of the Act establishes than an Australian Privacy Principles (APP) entity must comply with the APP, said entity means an agency or organisation as defined in s 1. The threshold for constituting an 'organisation' lies in the requirement that the individual, body corporate, partnership, unincorporated association or trust have an annual turnover of more than AUD$3,000,000 for a financial year unless an exception within s 6D applies.
+
+A party may constitute an 'organisation' and be held responsible under the APP should it be held accountable to the exceptions within the s 6D as mentioned above. The exceptions include businesses that provide a health service and hold health information, disclose personal information for profit, or are contracted service providers for a Commonwealth contract under s 6D(4).
+
+As Bookly does not have an annual turnover above AUD$3,000,000 nor does it fall within the exceptions of s 6D, it ought not to constitute an 'organisation' under the act or be held responsible under the APP and *Privacy Act 1988*.
+
+#### EU General Data Protection Regulation
+
+The General Data Protection Regulation (GDPR) is a regulation that was approved by the European Union (EU) Parliament in 2016 and became enforceable as of 25 May 2018. The regulation primarily aims to give control to individuals over their personal data and to simplify the regulatory environment for international business.
+
+The GDPR not only applies to organisations located within the EU, but also to organisations outside of the EU. While Bookly operates as a marketplace primarily targeting the Australian market, it is an online marketplace that is unrestricted by geographical boundaries and, in a strict sense, falls within the requirements as set out in the GDPR.
+
+As Bookly can thereotically store personal data about EU citizens, it must comply with data subject rights which concern multiple aspects.
+
+##### Consent
+Processing personal data is generally prohibited with the exception that it is expressly allowed by law, or the data subject has consented to such processing. The requirements for the effectiveness of a valid legal consent are contained within Article 7 and further clarified by recital 32 of the GDPR. In essence, consent must be freely given, specific, informed and unambiguous. Regarding "freely given", consent must have been given on a voluntary basis without inappropriate pressure or influence that could have affected that choice. 
+
+##### Breach Notification
+Article 33 of the GDPR establishes that, in the case of a personal data breach, the controller must notify the personal data breach to the supervisory authority competent in according with Article 55 not later than 72 hours after having become aware of the breach. There will be an exception to the notification requirement where the breach is unlikely to result in a risk to the rights and freedoms of natural persons.
+
+##### Right of Access
+By virtue of Article 15 of the GDPR, a data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning the data subject are being processed. If applicable, the controller must also allow access to the personal data.
+
+##### Data Portability
+Article 20 of the GDPR concerns the right to data portability. As stated within the article, the data subject shall have the right to receive his or her personal data to which he or she has provided to a controller. Specifically, this personal data must be provided in a structured, commonly used and machine-readable format where the data subject may transmit those data to another controller without hindrance.
+
+##### Privacy by Design
+Article 25 of the GDPR requires that controllers implement appropriate technical and organisational measures designed to implement data-protection principles, such as data minimisation, in an effective manner and to integrate necessary safeguards into the processing.
+
+Most relevantly, the controller must implement appropriate technical and organisational measures to ensure that only personal data which are necessary for each specific purpose of the processing are processed.
+
+Bookly, by design, collects a minimal amount of information to process orders. In order to use Bookly, a user must sign up for an account which will request first name, last name, username, email and password. Of these, last name and username are optional fields. Email and password are used for security and authentication purposes while first name is used for personalised prompts and messages. The development team stress that they are committed to open and transparent management of user data, information such as passwords are encrypted and not visible even to the developers themselves.
 
 ## Database design
 <!-- (90 points) Discuss design of the database and data structures in the README 
