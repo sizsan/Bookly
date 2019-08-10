@@ -167,12 +167,12 @@ Tony / Natalie
 
 ### User Stories
 
-US1 - As a User I can post an advert for my chosen book.
-US2 - As a User I can search for a specific book.
-US3 - As a User I can view a list of books available for sale.
-US4 - As a User I can order a book. 
-US5 - As a User I can add photos to my adverts.
-US6 - As a Seller I can delete my adverts.
+- US1 - As a User I can post an advert for my chosen book.
+- US2 - As a User I can search for a specific book.
+- US3 - As a User I can view a list of books available for sale.
+- US4 - As a User I can order a book. 
+- US5 - As a User I can add photos to my adverts.
+- US6 - As a Seller I can delete my adverts.
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
@@ -740,7 +740,7 @@ Include: -->
 2 (20 points) ERD
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
-![ERD](image.jpg)
+![Entity Relationship Diagram](docs/entity_relationship_diagram.png)
 
 ### Database Entities
 <!-- 3 (20 points) Description of database entities
