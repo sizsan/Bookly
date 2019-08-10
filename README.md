@@ -253,8 +253,11 @@ The development team constantly communicated with each other every day on Slack.
 
 ### Agile Methodology
 <!-- 18. Discuss how Agile methodology is being implemented in your project. -->
+The team has endeavoured to implement an Agile method of development for this project, which is considered to be a more flexible and iterative approach. Being a small team, there was regular communication in person, as well as via Slack, Trello and GitHub. Establishing user stories helped to define the minimum viable product. Development and testing were completed concurrently, which meant the team could make necessary adjustments to ensure the project remained on track to meet the MVP requirements.
 
-Natalie
+As was mentioned previously, initially the team intended to create an app dedicated to the exchange of text books specifically, and the user stories were written in that regard. However, as development progressed it was agreed that the app could have wider appeal if it was not limited to text books alone. The implementation of Google Books allowed the user to add any book title, and so the team agreed to expand the scope of the app to be a book exchange, for all books.
+
+Throughout development, feedback was welcomed among team members.  Minor changes were implemented where it was considered beneficial and viable.  Where ideas fell significantly outside the scope of the MVP, they were recorded in Trello to be considered in future extensions of the project.
 
 ### Source Control
 <!-- 19. Provide an overview and description of your Source control process. -->
