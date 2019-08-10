@@ -47,6 +47,10 @@ Installing Ruby:
 1. Ensure Ruby is installed by entering the following command in Terminal: `ruby --version`
     - If a valid Ruby version is not returned, refer to the following link to install Ruby for your operating system: https://www.ruby-lang.org/en/downloads/
 
+Installing PostgreSQL:
+1. Ensure PostgreSQL is installed by entering the following command in Terminal: `psql --version`
+   - If a valid version of PostgreSQL is not returned, refer to the link below to install PostgreSQL for your operating system: https://www.postgresql.org/download/
+
 Downloading the Application:
 1. Navigate to the GitHub repository as linked above; and
 2. Either **clone** or **download ZIP** of the application.
@@ -163,7 +167,11 @@ An order represents when a user opts to purchase a book from an advert listed by
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
-Tony / Natalie
+It would be fair to claim that most two-sided marketplaces in current existence work in a very similar manner to Bookly, but on a larger scale in terms of features and the sheer amount of data being processed. There are several large, online-based bookstores such as Book Depository but they do not compete in the same space as they are not two-sided.
+
+eBay is arguably the most prominent of examples when it comes to similar two-sided marketplaces. Indeed, one of the most obvious comparisons is that it is not catered to people exchanging books but open to all kinds of products. This in turn requires eBay to store many more models with their specific entities. These models may include categories or, more precisely, item types and their details that can range from condition to technical specifications (i.e. of a mobile phone). eBay's expansive model of data results in little reusability of tables and relations as it caters for more obscure and minute differences in products.
+
+In terms of payment, eBay employs PayPal as its payment gateway much like Bookly uses Stripe as the third-party to process payments. Although PayPal was a wholly-owned subsidiary of eBay for nearly 13 years, it is presently a separate publicly traded company. Consequently, eBay is divested of its responsibility in storing payment data as the majority of purchases route through the independent PayPal.
 
 ### User Stories
 
@@ -755,7 +763,27 @@ Natalie
    - Identify relationships used including the type of relationships, as shown in the ERD (10 points)
    - Discuss why the chosen relationships are used including any alternatives considered (10 points) -->
 
-Tony
+Defining relations within the database was a rather involved process as the development team sought to optimise use of data, avoiding any repetition where possible. As shown in the ERD, the following relationships were used.
+
+#### User Model
+- One mandatory primary key to many optional foreign keys (`seller_id`) in the Advert model
+   - This defines the relationship between `users` and `adverts` where the user has many adverts and adverts belong to user.
+   - This can also facilitate the implementation of a future extension whereby users can view all the adverts they have posted.
+- One mandatory primary key to many optional foreign keys (`buyer_id`) in the Order model
+   - This defines the relationship between `users` and `orders` where the user has many orders and orders belong to user.
+   - By establishing this relationship, it becomes a trivial matter to access a user's orders should that be required.
+
+#### Book Model
+- One mandatory primary key to many optional foreign keys (`book_id`) in the Advert model.
+   - This defines the relationship between `books` and `adverts` where a book has many adverts and adverts belong to a book.
+   - By establishing this relationship, the application avoids duplication of data on the same book and a user can theoretically view all adverts of a book. As a result, the amount of database calls needed to perform an action are also minimised.
+
+#### Advert Model
+- One mandatory primary key to one mandatory foreign key (`advert_id`) in the Order model.
+   - This relationship exists because an order must belong to an advert. Through this relationship, the Order model can use all information available to the Advert model and present that to the user.
+
+#### Order Model
+- The only relationships in the Order model have already been covered above where its entities consist only of foreign keys referring to the `advert_id` and `buyer_id`.
 
 ### Database Models
 <!-- 13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
