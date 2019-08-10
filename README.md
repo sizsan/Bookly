@@ -748,7 +748,11 @@ Include: -->
    - Provide a description of relational databases and what is important in relational database design (10 points)
    - Discuss how your design takes into account relational database design practices, including normalisation (10 points) -->
 
-- Natalie
+A relational database recognises relationships among sets of data, stored in tables. These tables form the models for the database. The table columns represent the model attributes or fields, while a row represents a record.
+
+In designing the database, it is important to consider what information is required, how it will be sorted and stored among tables, and how the data can be accessed to accommodate processing and reporting needs. The goal is  to optimise database efficiency by reducing redundancy and duplication of data, ensuring data accuracy and integrity, and allowing for extendibility. The process of database normalisation seeks to achieve this by splitting data into smaller tables, where data is not repeated, and linking them through relationships.
+
+The Entity Relationship Diagram (ERD) below displays how the database for this project has been designed. Data is stored in four separate tables: Users, Books, Adverts and Orders. Data is not duplicated in any of these tables. The Adverts table retrieves the seller's information from the Users table through the foreign key, seller_id, and book information from the Books table through the foreign key, book_id. Likewise, the Orders table draws information about an advert from the Adverts table, through the foreign key, advert_id, and information about the buyer from the Users table through the foreign key, buyer_id.
 
 ### Database Entity Relationship Diagram
 <!-- 14. Provide your database schema design.
