@@ -29,7 +29,7 @@ The driving influence and philosophy behind Bookly is to focus on one purpose an
 Contrasting with generic marketplaces, Bookly focuses on books and allows users to list books for sale or place an order with minimal impediments. A user need not spend more time than necessary in order to list a book as being for sale. Similarly, a user will find very few steps in between logging in to Bookly and placing an order for a book that they have just found. This straightforward implementation resolves any qualms that a user might have in navigating a more convoluted marketplace competitor in achieving the same objective as on Bookly.
 
 ### Screenshots
-![alt text](image.jpg)
+![App Screenshot](docs/app_screenshot.gif)
 
 ### Tech Stack
 - HTML
