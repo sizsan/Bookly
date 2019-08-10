@@ -660,7 +660,49 @@ Jack
 <!-- 23. Research what your legal obligations are in relation to handling user data.
 (10 points) Research legal obligations for data protection and discuss. One place to look is GDPR requirements (there is a unit in canvas) -->
 
-Tony
+#### *Privacy Act 1988*
+
+Australian businesses have been primarily governed by the *Privacy Act 1988* ("the Act") since an amendment was passed in 2000. The Act contains the 13 Australian Privacy Principles (APPs) which are the cornerstone of the privacy protection framework.
+
+As summarised by the [Office of the Australian Information Commissioner](https://oaic.gov.au/privacy/australian-privacy-principles/), the APPs govern the standards, rights and obligations around:
+- the collection, use and disclosure of personal information;
+- an organisation or agency’s governance and accountability;
+- integrity and correction of personal information; and
+- the rights of individuals to access their personal information.
+
+##### Our Obligations under Australian Law
+Section 16 of the Act establishes than an Australian Privacy Principles (APP) entity must comply with the APP, said entity means an agency or organisation as defined in s 1. The threshold for constituting an 'organisation' lies in the requirement that the individual, body corporate, partnership, unincorporated association or trust have an annual turnover of more than AUD$3,000,000 for a financial year unless an exception within s 6D applies.
+
+A party may constitute an 'organisation' and be held responsible under the APP should it be held accountable to the exceptions within the s 6D as mentioned above. The exceptions include businesses that provide a health service and hold health information, disclose personal information for profit, or are contracted service providers for a Commonwealth contract under s 6D(4).
+
+As Bookly does not have an annual turnover above AUD$3,000,000 nor does it fall within the exceptions of s 6D, it ought not to constitute an 'organisation' under the act or be held responsible under the APP and *Privacy Act 1988*.
+
+#### EU General Data Protection Regulation
+
+The General Data Protection Regulation (GDPR) is a regulation that was approved by the European Union (EU) Parliament in 2016 and became enforceable as of 25 May 2018. The regulation primarily aims to give control to individuals over their personal data and to simplify the regulatory environment for international business.
+
+The GDPR not only applies to organisations located within the EU, but also to organisations outside of the EU. While Bookly operates as a marketplace primarily targeting the Australian market, it is an online marketplace that is unrestricted by geographical boundaries and, in a strict sense, falls within the requirements as set out in the GDPR.
+
+As Bookly can thereotically store personal data about EU citizens, it must comply with data subject rights which concern multiple aspects.
+
+##### Consent
+Processing personal data is generally prohibited with the exception that it is expressly allowed by law, or the data subject has consented to such processing. The requirements for the effectiveness of a valid legal consent are contained within Article 7 and further clarified by recital 32 of the GDPR. In essence, consent must be freely given, specific, informed and unambiguous. Regarding "freely given", consent must have been given on a voluntary basis without inappropriate pressure or influence that could have affected that choice. 
+
+##### Breach Notification
+Article 33 of the GDPR establishes that, in the case of a personal data breach, the controller must notify the personal data breach to the supervisory authority competent in according with Article 55 not later than 72 hours after having become aware of the breach. There will be an exception to the notification requirement where the breach is unlikely to result in a risk to the rights and freedoms of natural persons.
+
+##### Right of Access
+By virtue of Article 15 of the GDPR, a data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning the data subject are being processed. If applicable, the controller must also allow access to the personal data.
+
+##### Data Portability
+Article 20 of the GDPR concerns the right to data portability. As stated within the article, the data subject shall have the right to receive his or her personal data to which he or she has provided to a controller. Specifically, this personal data must be provided in a structured, commonly used and machine-readable format where the data subject may transmit those data to another controller without hindrance.
+
+##### Privacy by Design
+Article 25 of the GDPR requires that controllers implement appropriate technical and organisational measures designed to implement data-protection principles, such as data minimisation, in an effective manner and to integrate necessary safeguards into the processing.
+
+Most relevantly, the controller must implement appropriate technical and organisational measures to ensure that only personal data which are necessary for each specific purpose of the processing are processed.
+
+Bookly, by design, collects a minimal amount of information to process orders. In order to use Bookly, a user must sign up for an account which will request first name, last name, username, email and password. Of these, last name and username are optional fields. Email and password are used for security and authentication purposes while first name is used for personalised prompts and messages. The development team stress that they are committed to open and transparent management of user data, information such as passwords are encrypted and not visible even to the developers themselves.
 
 ## Database design
 <!-- (90 points) Discuss design of the database and data structures in the README 
