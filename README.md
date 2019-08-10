@@ -239,7 +239,403 @@ Basic source control process as followed by the team:
 ### Testing Process
 <!-- 20. Provide an overview and description of your Testing process. -->
 
-Tony
+The development team of Bookly underwent a thorough testing process that constantly ensured the quality and integrity of the application remain intact. Testing consisted of both manual testing and unit testing.
+
+#### Manual Testing
+The development team executed manual test cases to discover bugs in the Rails application. Manual testing is a necessity as it allows developers to understand the feasibility of automated testing. In the case of Bookly, the developers continually tested each component of the application as they were being created, whether it be the controllers, models or views. A record of the manual testing process can be found below.
+
+![Manual Testing](docs/manual_testing.png "Manual Testing Spreadsheet")
+
+#### Unit Testing
+Unit testing consists of testing individual components of the application but differs from manual testing in that it is often automated. RSpec, the behaviour-driven development framework, was used for this project to ensure that all components matched a consistent design as defined in the test files. The output of said automated tests can be found below.
+
+```ruby
+
+===================================
+Tue 30 Jul 23:20:15 AEST 2019
+===================================
+
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new questions with correct fields
+
+User
+  creates a new user with correct fields
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+Finished in 0.07638 seconds (files took 0.84083 seconds to load)
+11 examples, 0 failures
+
+
+
+===================================
+Wed 31 Jul 11:12:23 AEST 2019
+===================================
+
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Books
+  GET /books
+    works!
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 1.91 seconds (files took 0.87056 seconds to load)
+19 examples, 0 failures
+
+
+
+===================================
+Mon 5 Aug 15:59:30 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 2.8 seconds (files took 0.84801 seconds to load)
+38 examples, 0 failures
+
+
+
+===================================
+Mon 5 Aug 22:06:24 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+adverts/index
+  renders a list of adverts
+
+adverts/new
+  renders new advert form
+
+adverts/show
+  renders attributes in <p>
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 3.6 seconds (files took 0.84266 seconds to load)
+41 examples, 0 failures
+
+
+
+===================================
+Tue 6 Aug 09:37:14 AEST 2019
+===================================
+
+
+AdvertsController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Advert
+      redirects to the created advert
+    with invalid params
+      returns a success response
+  DELETE #destroy
+    destroys the requested advert
+    redirects to the adverts list
+
+BooksController
+  GET #index
+    returns a success response
+  GET #show
+    returns a success response
+  GET #new
+    returns a success response
+  POST #create
+    with valid params
+      creates a new Book
+      redirects to the created book
+    with invalid params
+      returns a success response
+
+Advert
+  creates new adverts with correct fields
+
+Book
+  creates new books with correct fields
+
+Order
+  creates new orders with correct fields
+
+User
+  creates new adverts with correct fields
+
+Adverts
+  GET /adverts
+    works!
+
+Books
+  GET /books
+    works!
+
+Orders
+  GET /orders
+    works!
+
+AdvertsController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+BooksController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+OrdersController
+  routing
+    routes to #index
+    routes to #new
+    routes to #show
+    routes to #edit
+    routes to #create
+    routes to #update via PUT
+    routes to #update via PATCH
+    routes to #destroy
+
+adverts/index
+  renders a list of adverts
+
+adverts/new
+  renders new advert form
+
+adverts/show
+  renders attributes in <p>
+
+books/index
+  renders a list of books
+
+books/new
+  renders new book form
+
+books/show
+  renders attributes in <p>
+
+Finished in 3.66 seconds (files took 0.84835 seconds to load)
+51 examples, 0 failures
+```
 
 ## Information Security and User Data
 
