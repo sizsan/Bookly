@@ -130,7 +130,7 @@ Jack
 ## Design Documentation
 
 ### Design Process
-<!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? -->
+<!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? Or not required? -->
 
 ### Arhitecture and High-Level Design
 <!-- 8. Describe the architecture of your App.
@@ -141,7 +141,7 @@ Include the following:
 -A brief description of each high level component (10 points) -->
 
 #### User Journey Workflow
-![User Journey Workflow](docs/user_journey_workflow.png)
+![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
 #### Components
 
@@ -748,14 +748,30 @@ Include: -->
 2 (20 points) ERD
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
-![Entity Relationship Diagram](docs/entity_relationship_diagram.png)
+![Entity Relationship Diagram](docs/entity_relationship_diagram.png "Entity Relationship Diagram")
 
 ### Database Entities
 <!-- 3 (20 points) Description of database entities
    - Define the entities in your ERD and how they are used in your app (10 points)
    - Describe the fields of the entities in the ERD, including data types, default values, required vs. optional, primary keys, and reasons for choices made on these items (10 points) -->
 
-Natalie
+Define entities
+How are they used in the app?
+Describe fields:
+- data types
+- default values
+- required vs optional
+- primary keys
+- reasons for choices
+
+#### Users
+
+#### Books
+
+#### Adverts
+
+#### Orders
+
 
 ### Database Relations
 <!-- 12. Discuss the database relations to be implemented.
