@@ -145,24 +145,6 @@ Include the following:
 
 #### Components
 
-##### Users
-A user can sign up and must be logged in to buy or sell books. Once logged in a user can:
--	View a list of books
--	Add a new book to the list
--	Select a book to sell
--	Create an advert
--	Delete an advert that they have created
--	View adverts placed by other users
--	Complete an order to buy a book from another user
-
-##### Books
-A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
-
-##### Adverts
-An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
-
-##### Orders
-An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
 
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
@@ -758,23 +740,32 @@ Include: -->
    - Define the entities in your ERD and how they are used in your app (10 points)
    - Describe the fields of the entities in the ERD, including data types, default values, required vs. optional, primary keys, and reasons for choices made on these items (10 points) -->
 
-Define entities
-How are they used in the app?
-Describe fields:
-- data types
-- default values
-- required vs optional
-- primary keys
-- reasons for choices
-
 #### Users
+A user can sign up and must be logged in to buy or sell books. Once logged in a user can:
+-	View a list of books
+-	Add a new book to the list
+-	Select a book to sell
+-	Create an advert
+-	Delete an advert that they have created
+-	View adverts placed by other users
+-	Complete an order to buy a book from another user
+
+The user primary key is the user_id. A user has an email and password attribute, which are both stored as a string. The default for these attributes is an empty string and they are set as required at the database level. These fields have been implemented with the Devise gem. To create a more personal user experience, a first name, last name and username field have also been added. These fields are also stored as a string and are optional at the database level. The decision was made to make only the first name a required field but this has been enforced in the form view so the user cannot submit a request to sign up without entering their first name.
 
 #### Books
+A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
+
+A book has the attributes: ISBN, title, author, description and image_link. The primary key is the book_id. This data is sourced from Google Books and these fields all have the data type, string, to be consistent with the Google Books record. The ISBN and title are required fields as a book cannot be added without this information. The description, image_link and author are optional.
 
 #### Adverts
+An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
+
+An advert has the attributes of seller_id, price, condition and book_id. The primary key is the advert_id. The seller_id refers to the user_id but has been renamed for clarity as a seller will post an advert. The seller_id and book_id are stored as integers. The price is a decimal and the condition is a string. All fields are required to create an advert and this in enforced in the application. A user must be signed in, they must select a book, they must enter a price, and the condition is set as a drop-down selection in the view. This prevents the user creating an advert record without the required information.
 
 #### Orders
+An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
 
+The order primary key is order_id, with the attributes advert_id and buyer_id, stored as integers. The buyer_id again refers to the user_id but has been renamed for clarity as a buyer will order a book. Both advert_id and buyer_id are required attributes. This is enforced in the application as a user must be signed in and then select an advert to place an order.
 
 ### Database Relations
 <!-- 12. Discuss the database relations to be implemented.
