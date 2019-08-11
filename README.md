@@ -131,7 +131,7 @@ Jack
 
 ### Design Process
 1. Formulate required data as models and their entities;
-2. Establish relations between those models in order to maximise efficiency and reduce reputation in data;
+2. Establish relations between those models in order to maximise efficiency and reduce repitition in data;
 3. Define methods within the model to determine how that data is passed to the controller;
 4. Create controller actions where required to interact with database and views; and
 5. Create views to display that data to the end user.
@@ -143,7 +143,6 @@ Jack
 Include the following:
 -A diagram showing the high level components, how the user interacts with those components, and how they interact with each other (10 points)
 -A brief description of each high level component (10 points) -->
-
 ![Architecture](docs/high_level_architecture.png)
 
 As seen in the above visualisation, the high-level components of Bookly can be broken into three broad categories of models, views and controllers as per the MVC architecture. The architecture has been framed as a part of the workflow in order to better demonstrate the different components being used at various stages.
@@ -162,7 +161,6 @@ Once the user attempts to order the book within that advert, the ID of the adver
 
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
-
 It would be fair to claim that most two-sided marketplaces in current existence work in a very similar manner to Bookly, but on a larger scale in terms of features and the sheer amount of data being processed. There are several large, online-based bookstores such as Book Depository but they do not compete in the same space as they are not two-sided.
 
 eBay is arguably the most prominent of examples when it comes to similar two-sided marketplaces. Indeed, one of the most obvious comparisons is that it is not catered to people exchanging books but open to all kinds of products. This in turn requires eBay to store many more models with their specific entities. These models may include categories or, more precisely, item types and their details that can range from condition to technical specifications (i.e. of a mobile phone). eBay's expansive model of data results in little reusability of tables and relations as it caters for more obscure and minute differences in products.
@@ -170,7 +168,6 @@ eBay is arguably the most prominent of examples when it comes to similar two-sid
 In terms of payment, eBay employs PayPal as its payment gateway much like Bookly uses Stripe as the third-party to process payments. Although PayPal was a wholly-owned subsidiary of eBay for nearly 13 years, it is presently a separate publicly traded company. Consequently, eBay is divested of its responsibility in storing payment data as the majority of purchases route through the independent PayPal.
 
 ### User Stories
-
 - US1 - As a User I can post an advert for my chosen book.
 - US2 - As a User I can search for a specific book.
 - US3 - As a User I can view a list of books available for sale.
@@ -178,13 +175,11 @@ In terms of payment, eBay employs PayPal as its payment gateway much like Bookly
 - US5 - As a User I can add photos to my adverts.
 - US6 - As a Seller I can delete my adverts.
 
-<!-- Now that we have MVC diagram above, should we move user journey workflow diagram back to here now perhaps? This is where is was listed in canvas. -->
 ### User Journey Workflow
 ![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
-Natalie
 #### Desktop
 ![Desktop Wireframes](docs/wireframes_desktop.png "Desktop Wireframes")
 #### Tablet
@@ -194,7 +189,6 @@ Natalie
 
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
-
 To plan this the team used Trello and daily standups to ensure everyone was up to date and knew what their task for the day was.
 
 ### Project Plan & Timeline
@@ -743,10 +737,9 @@ Include: -->
 <!-- 1 (20 points) Understanding of relational database design (https://medium.com/@kimtnguyen/relational-database-schema-design-overview-70e447ff66f9)
    - Provide a description of relational databases and what is important in relational database design (10 points)
    - Discuss how your design takes into account relational database design practices, including normalisation (10 points) -->
-
 A relational database recognises relationships among sets of data, stored in tables. These tables form the models for the database. The table columns represent the model attributes or fields, while a row represents a record.
 
-In designing the database, it is important to consider what information is required, how it will be sorted and stored among tables, and how the data can be accessed to accommodate processing and reporting needs. The goal is  to optimise database efficiency by reducing redundancy and duplication of data, ensuring data accuracy and integrity, and allowing for extendibility. The process of database normalisation seeks to achieve this by splitting data into smaller tables, where data is not repeated, and linking them through relationships.
+In designing the database, it is important to consider what information is required, how it will be sorted and stored among tables, and how the data can be accessed to accommodate processing and reporting needs. The goal is to optimise database efficiency by reducing redundancy and duplication of data, ensuring data accuracy and integrity, and allowing for extendibility. The process of database normalisation seeks to achieve this by splitting data into smaller tables, where data is not repeated, and linking them through relationships.
 
 The Entity Relationship Diagram (ERD) below displays how the database for this project has been designed. Data is stored in four separate tables: Users, Books, Adverts and Orders. Data is not duplicated in any of these tables. The Adverts table retrieves the seller's information from the Users table through the foreign key, seller_id, and book information from the Books table through the foreign key, book_id. Likewise, the Orders table draws information about an advert from the Adverts table, through the foreign key, advert_id, and information about the buyer from the Users table through the foreign key, buyer_id.
 
@@ -772,7 +765,7 @@ A user can sign up and must be logged in to buy or sell books. Once logged in a 
 -	View adverts placed by other users
 -	Complete an order to buy a book from another user
 
-The user primary key is the user_id. A user has an email and password attribute, which are both stored as a string. The default for these attributes is an empty string and they are set as required at the database level. These fields have been implemented with the Devise gem. To create a more personal user experience, a first name, last name and username field have also been added. These fields are also stored as a string and are optional at the database level. The decision was made to make only the first name a required field but this has been enforced in the form view so the user cannot submit a request to sign up without entering their first name.
+The user primary key is the user_id. A user has an email and password attribute, which are both stored as a string. The default for these attributes is an empty string and they are set as required at the database level. These fields have been implemented with the Devise gem. To create a more personal user experience, a first name, last name and username field have also been added. These fields are also stored as a string and are optional at the database level. Of these, the decision was made to make only the first name a required field but this has been enforced in the form view so the user cannot submit a request to sign up without entering their first name.
 
 #### Books
 A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
@@ -780,7 +773,7 @@ A book represents a book listing with Google Books. The user enters the book tit
 A book has the attributes: ISBN, title, author, description and image_link. The primary key is the book_id. This data is sourced from Google Books and these fields all have the data type, string, to be consistent with the Google Books record. The ISBN and title are required fields as a book cannot be added without this information. The description, image_link and author are optional.
 
 #### Adverts
-An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
+An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
 
 An advert has the attributes of seller_id, price, condition and book_id. The primary key is the advert_id. The seller_id refers to the user_id but has been renamed for clarity as a seller will post an advert. The seller_id and book_id are stored as integers. The price is a decimal and the condition is a string. All fields are required to create an advert and this in enforced in the application. A user must be signed in, they must select a book, they must enter a price, and the condition is set as a drop-down selection in the view. This prevents the user creating an advert record without the required information.
 
