@@ -36,7 +36,7 @@ Contrasting with generic marketplaces, Bookly focuses on books and allows users 
 - Sass / CSS
 - Bulma
 - JavaScript
-- Ruby and .erb
+- Ruby and eRuby (Embedded Ruby)
 - Ruby on Rails
 - PostgreSQL
 - Heroku
@@ -66,13 +66,14 @@ Database Setup:
 3. If necessary, change the settings within `database.yml` to match the credentials of your PostgreSQL setup.
 
 Running the Application on your localhost
-1. Ensure you are in the application's root directory and enter the following command to run the application within your browswer: `rails server`
+1. Ensure you are in the application's root directory and enter the following command to run the application within your browser: `rails server`
 
 ### Network Infrastructure
 <!-- 4. Describe the network infrastructure the App may be based on.
-https://devcenter.heroku.com/articles/http-routing -->
-
-Jack
+https://devcenter.heroku.com/articles/http-routing 
+https://devcenter.heroku.com/articles/dynos
+https://www.heroku.com/dynos-->
+For this application we used Heroku for our HTTP routing. We chose this cloud service as it handles all of our routing for us through the use of web, worker and one-off dynos. Heroku handles incoming requests by sending them to a load balancer that offers SSL (Secure Socket Layer) termination, from there the request is sent to a router which then determines where the web dynos for the application will be located. Once a web dyno has been selected the router establishes a TCP connection with the dyno then forwards the HTTP request to said dyno. Once the web dyno has received the HTTP request, the request is put into a queue and the web dyno returns a success message to the user. Then a worker dyno picks up the request and runs any process defined in the users procfile that are not defined as 'web'. The worker dynos then return a result and then saves to a database.
 
 ### Third Party Software and Services
 <!-- 5. Identify and describe the software to be used in your App.
@@ -80,11 +81,6 @@ Jack
 (20 points) Identify and describe any third party software and services used by your app. 
    - Include services used to deploy your app, to upload content through your app, or to accept payment through your app (10 points)
    - List all gems used and their purpose (10 points) -->
-
-<!-- Tony
-- Cloudinary
-- Stripe
-- Gems -->
 
 Bookly makes use of several third party software and services for varying purposes.
 
@@ -106,7 +102,7 @@ Thus, Stripe was added to Bookly in the form of a Ruby gem and a checkout sessio
 Aside from Cloudinary and Stripe as mentioned above, other gems were used for the development of Bookly.
 
 ##### RSpec
-RSpec is a Domain Specific Language testing tool used to test Ruby code. It formed a large part of the testing process which is discussed in greater detail under **Testing Process**.
+RSpec is a Domain Specific Language testing tool used to test Ruby code. It formed a large part of the testing process which is discussed in greater detail under the **Testing Process** heading.
 
 ##### GoogleBooks
 The GoogleBooks gem forms an essential part of Bookly's back end code where it acts as an intermediary between the Rails application and Google Books' servers. The gem queries the Google API to search for publications in the Google Books repository, having found a match it will assist the application in acquiring information on a specific book and hold a copy of that data in Bookly's own database within the `books` table.
@@ -118,21 +114,19 @@ Devise is a flexible authentication solution for Rails based on Warden. It was a
 
 #### Database Selection
 <!-- 6. Identify the database to be used in your App and provide a justification for your choice. -->
+For this project the development team decided to use PostgreSQL to manage the database. The initial reason for this decision was that all team members already had a familiarity with PostgreSQL and its application to Rails. Upon further examination of PostgreSQL, the team discovered that it was one of the most advanced database management systems available. The pros of PostgreSQL being that it is flexible, highly extensible, and offers strong security. PostgreSQL allows the user to set specific parameters, thus allowing the ability to place custom limits on fields that required user input. Another great feature that PostgreSQL offers is that it is highly extensible, allowing continuous changes to the database for example if we wanted to add a new datatype we can do that through PostgreSQL simply by asking it to create an extension. PostgreSQL also offers great security features, it provides parameter security as well as app security. Another arguably great thing about PostgreSQL is that it is an open source project meaning that if were to run into a problem there is a vibrant and independent community to aid us. On the other hand PostgreSQL has some draw backs when compared to newer NoSQL databases. The drawbacks being that it has a slower performance and is very strict towards querying data. However, for the purposes of this application the pros far outweigh the cons.
 
-Jack
-- Write about pros and cons of PostgreSQL as compared to other SQL database systems
 
 #### Production Database Setup
 <!-- 7. Identify and describe the production database setup (i.e. postgres instance). -->
-
-Jack
+For our Rails application we used PostgreSQL as our production database instance (environment). However to setup the database our team used the built-in Rails helpers to generate migration scripts that we then ran using `rails db:migrate`. We generated these migration scripts to create, edit and remove tables from our database. This setup method was selected because we already had a basic understanding of migration scripts and their application to PostgreSQL.      
 
 ## Design Documentation
 
 ### Design Process
 <!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? Or not required? -->
 1. Formulate required data as models and their entities;
-2. Establish relations between those models in order to maximise effiency and reduce reputation in data;
+2. Establish relations between those models in order to maximise efficiency and reduce repetition in data;
 3. Define methods within the model to determine how that data is passed to the controller;
 4. Create controller actions where required to interact with database and views; and
 5. Create views to display that data to the end user.
@@ -149,7 +143,7 @@ Include the following:
 
 As seen in the above visualisation, the high-level components of Bookly can be broken into three broad categories of models, views and controllers as per the MVC architecture. The architecture has been framed as a part of the workflow in order to better demonstrate the different components being used at various stages.
 
-The `User` model is the first component that a user will interact with, where they are prompted to create an account before they can access the application's features. Here, the `User` model determines the form in which inputted data is saved into the database. Once validated by the model, that data is saved into the `Users` table witin the database.
+The `User` model is the first component that a user will interact with, where they are prompted to create an account before they can access the application's features. Here, the `User` model determines the form in which inputted data is saved into the database. Once validated by the model, that data is saved into the `Users` table within the database.
 
 When a user attempts to add a book to Bookly, they will search for a book which triggers the `Book` model. Within the model is a method by which the `GoogleBooks` gem queries the Google Books servers to return the first result. Specifically, a book's title, description, authors, ISBN and a link to the cover image are pulled from said servers. Consequently, the `Books` controller saves that data into the database.
 
@@ -164,18 +158,16 @@ Once the user attempts to order the book within that advert, the ID of the adver
 #### User Journey Workflow
 ![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
-
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
 It would be fair to claim that most two-sided marketplaces in current existence work in a very similar manner to Bookly, but on a larger scale in terms of features and the sheer amount of data being processed. There are several large, online-based bookstores such as Book Depository but they do not compete in the same space as they are not two-sided.
 
-eBay is arguably the most prominent of examples when it comes to similar two-sided marketplaces. Indeed, one of the most obvious comparisons is that it is not catered to people exchanging books but open to all kinds of products. This in turn requires eBay to store many more models with their specific entities. These models may include categories or, more precisely, item types and their details that can range from condition to technical specifications (i.e. of a mobile phone). eBay's expansive model of data results in little reusability of tables and relations as it caters for more obscure and minute differences in products.
+eBay is arguably the most prominent of examples when it comes to similar two-sided marketplaces. Indeed, one of the most obvious comparisons is that it is not catered to people exchanging books but open to all kinds of products. This in turn requires eBay to store many more models with their specific entities. These models may include categories or, more precisely, item types and their details that can range from condition to technical specifications (e.g. of a mobile phone). eBay's expansive model of data results in little reusability of tables and relations as it caters for more obscure and minute differences in products.
 
 In terms of payment, eBay employs PayPal as its payment gateway much like Bookly uses Stripe as the third-party to process payments. Although PayPal was a wholly-owned subsidiary of eBay for nearly 13 years, it is presently a separate publicly traded company. Consequently, eBay is divested of its responsibility in storing payment data as the majority of purchases route through the independent PayPal.
 
 ### User Stories
-
 - US1 - As a User I can post an advert for my chosen book.
 - US2 - As a User I can search for a specific book.
 - US3 - As a User I can view a list of books available for sale.
@@ -235,7 +227,7 @@ To plan this we used Trello and daily standups to ensure everyone was up to date
 #### Week 3
 
 ##### Day 1
-- Begin docmentation
+- Begin documentation
 - Finalise the MVP with negative testing
 
 ##### Day 2
@@ -245,7 +237,13 @@ To plan this we used Trello and daily standups to ensure everyone was up to date
 - Complete any remaining tasks on the Trello Board
 
 ### Trello Board
-![alt text](image.jpg)
+![Starting](docs/Trello1.png)
+![Begining](docs/Trello2.png)
+![Priorities](docs/Trello3.png)
+![Week 3](docs/Trello4.png)
+![Sizing](docs/Trello5.png)
+
+
 
 ### Communication
 The development team constantly communicated with each other every day on Slack.
@@ -258,7 +256,7 @@ The team has endeavoured to implement an Agile method of development for this pr
 
 As was mentioned previously, initially the team intended to create an app dedicated to the exchange of text books specifically, and the user stories were written in that regard. However, as development progressed it was agreed that the app could have wider appeal if it was not limited to text books alone. The implementation of Google Books allowed the user to add any book title, and so the team agreed to expand the scope of the app to be a book exchange, for all books.
 
-Throughout development, feedback was welcomed among team members.  Minor changes were implemented where it was considered beneficial and viable.  Where ideas fell significantly outside the scope of the MVP, they were recorded in Trello to be considered in future extensions of the project.
+Throughout development, feedback was welcomed among team members. Minor changes were implemented where it was considered beneficial and viable.  Where ideas fell significantly outside the scope of the MVP, they were recorded in Trello to be considered in future extensions of the project.
 
 ### Source Control
 <!-- 19. Provide an overview and description of your Source control process. -->
@@ -288,7 +286,6 @@ Unit testing consists of testing individual components of the application but di
 
 ```ruby
 
-===================================
 Tue 30 Jul 23:20:15 AEST 2019
 ===================================
 
@@ -673,20 +670,48 @@ books/show
 Finished in 3.66 seconds (files took 0.84835 seconds to load)
 51 examples, 0 failures
 ```
+=======
 
 ## Information Security and User Data
 
 ### Information System Security Requirements
 <!-- 21. Discuss and analyse requirements related to information system security.
 (30 points) Discuss information security requirements and discuss what you will do to address those requirements, or would do in a future release of the application (beyond MVP) -->
+The information security requirements that are related to information systems are 'Authentication and Authorisation', 'Data Backups', 'Encryption', and 'Third Party Vendor Security'. The following list is made up of the required information security for an information system however there are multiple other requirements that further the strength of an applications security to an information system. 
 
-Jack
+### Authentication and Authorisation
+This requirement is focused on identifying a user's unique system, controlling a user's privileges and ensure that all sensitive data is secure and encrypted. The reason that each user has to be identified is to prevent a user from signing up with a bot to spam the database with information causing various complications. After the user has been identified they are then able to sign-up, doing so requires a password. Passwords fall under the category of sensitive data. This is another aspect of the authentication side of this requirement, encrypting sensitive data for the user that is then used to protect their account. Once a user has signed-up they are assigned the absolute minimum amount of privileges needed to use the application. Applying such heavy restrictions to the users privileges means that we have less pages to add authentication to saving our team time. In our application we chose to use 'Devise' to handle our 'Authentication and Authorisation'.
+
+### Encryption
+Encrypting data is one of the best ways to prevent users from gaining access to sensitive data. This method of security is used to disguise sensitive data like API keys to third party services, passwords and specific portions of code to the user. For this project we did a very small amount of manual encryption with just our Stripe and Cloudinary API keys being in the `credentials` file provided by Rails. The rails `credentials` file can only be decrypted with the unique `master.key` file that was shared around our team making it possible for us all to use the API keys in the `credentials` file. However this was not the only encryption that our application used as we were using multiple cloud services each with their own inbuilt encryption protocols. It is recommended that if we published this application much more information would need to be encrypted. For example IDs, crucial source code (unless we released this application as open source).
+
+### Data Backups 
+Another requirement of information security is having backups of all the data that is stored on the system. This security measure ensures that the users crucial data (i.e. their account) will not be lost if an error occurs that causes us to reset our database. These backups offer a level of safety and security to our data that cannot be gained any other way. For this application we chose to backup all our source code on GitHub.
+
+### Third Party Vendors.
+Outsourcing to a third party vendor is a great way to save time and resources however for each additional cloud service that is used by an application, that application can only be as secure as the aforementioned cloud service. This is why it is important that when outsourcing to only provide the vendor with the minimum amount of privilege and data. Doing this ensures that you are not leaving an application open to unnecessary levels of risk. Another aspect of third party vendor security is ensuring that the connection between an application's local server and the third party's server is secure. An easy way to do this is through the use of API keys for encryption purposes. However, these precaution are meaningless if the vendor itself is insecure. The third party services that are used in this application are Stipe, Cloudinary and Heroku. All of these services offer strong reliable security. In the future we would upgrade our subscriptions to Heroku, Cloudinary and Stripe as we would need more space on their servers if we had an increase in user traffic.
+
 
 ### Methods to Protect Information and Data
 <!-- 22. Discuss methods you will use to protect information and data.
 (20 points) Discuss requirement for information security and how your project addresses them (for example, using devise for authentication/authorization). For top points, discuss other options to protect data, benefits and tradeoffs, and why you chose what you did in your project. -->
+The methods that we used to protect our data were Devise, Heroku, Cloudinary, Stripe and the `credentials` file provided by Rails to encrypt our sensitive data (i.e. API keys).
 
-Jack
+### Devise (Authentication And Authorisation)
+
+Our initial reason for choosing Devise was because it was quite easy to implement and came with its own views for signing up and logging in as well as a few built-in methods that made tailoring the UI to each individual user much simpler. After doing some further research we discovered that Devise was in fact a viable option for user authentication as it uses strong encryptions and strict validations to keep its information safe. Devise uses an authentication model that is responsible for sending the user's passwords to a hash that is then encrypted and validating the authenticity of a user while signing in. To encrypt the passwords, Devise generates a random string that is then fed to the development database for a rails application. Devise also validates the user's inputs based on default requirements like default password length and validation for emails. Overall, Devise is an incredibly secure, easy to use cloud service for adding authentication to a Rails application.
+
+### Heroku (Network Security)
+Heroku employs many different methods of security to protect their servers along with the user's information and their network. These methods include 'Firewalls', 'Spoofing and Sniffing Protections', 'System and Customer Authentication' and 'Application Isolation'. The Heroku firewalls are designed to restrict access to systems from external networks and internal systems. "By default, all access is denied and only explicitly allowed ports and protocols are allowed based on business need." This excessive limitation helps Heroku with another method of security. Application isolation in Heroku is done through the use of dynos that are randomly selected by an algorithm run by Heroku. Isolating each user application in their own environment prevents a myriad of stability and security issues. These issues being Distributed Denial of Service (DDoS) attacks and Spoofing and Sniffing. This is because each environment is protected with a firewall that will not deliver traffic to an interface that is not directly addressed to. Heroku protects its connection to the PostgreSQL database through an incredibly strong encryption called SSL. 
+
+### Rails Credentials File (Encryption)
+A new feature (as of Rails 5.2) is an encrypted credentials file. This file is encrypted with a unique key that is stored in the `master.key` file. For our application we used this file to protected our API keys for Stripe and Cloudinary. The benefits of using the built-in Rails encryption is that encrypted credentials are saved in a repository and only having one file. This saved us time as it was easier to manage just having one file than decoding multiple. An example of a `master.key` file can be found [here.](https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2)
+
+### Cloudinary/Stripe (Third Party Vendor Security)
+Cloudinary and Stripe use very similar security measures to keep their service safe. In terms of application security, they both use a secret API key to connect to an application. This key is stored in our credentials file and is encrypted by both services. In regards to network security, they differ slightly. Cloudinary uses third party software called Dome9 to monitor network traffic to and from their servers whereas Stripe uses an SSL encryption for all of its HTTP requests. Both of these methods are viable and provide more than a reasonable amount of security.
+
+### Backups 
+To backup our application we used GitHub. GitHub is a trusted online storage platform that is used by many real world companies and therefore has more than enough security for our purposes. 
 
 ### Legal Obligations for Data Protection
 <!-- 23. Research what your legal obligations are in relation to handling user data.
@@ -715,13 +740,13 @@ The General Data Protection Regulation (GDPR) is a regulation that was approved 
 
 The GDPR not only applies to organisations located within the EU, but also to organisations outside of the EU. While Bookly operates as a marketplace primarily targeting the Australian market, it is an online marketplace that is unrestricted by geographical boundaries and, in a strict sense, falls within the requirements as set out in the GDPR.
 
-As Bookly can thereotically store personal data about EU citizens, it must comply with data subject rights which concern multiple aspects.
+As Bookly can theoretically store personal data about EU citizens, it must comply with data subject rights which concern multiple aspects.
 
 ##### Consent
 Processing personal data is generally prohibited with the exception that it is expressly allowed by law, or the data subject has consented to such processing. The requirements for the effectiveness of a valid legal consent are contained within Article 7 and further clarified by recital 32 of the GDPR. In essence, consent must be freely given, specific, informed and unambiguous. Regarding "freely given", consent must have been given on a voluntary basis without inappropriate pressure or influence that could have affected that choice. 
 
 ##### Breach Notification
-Article 33 of the GDPR establishes that, in the case of a personal data breach, the controller must notify the personal data breach to the supervisory authority competent in according with Article 55 not later than 72 hours after having become aware of the breach. There will be an exception to the notification requirement where the breach is unlikely to result in a risk to the rights and freedoms of natural persons.
+Article 33 of the GDPR establishes that, in the case of a personal data breach, the controller must notify the personal data breach to the supervisory authority competent in accordance with Article 55 not later than 72 hours after having become aware of the breach. There will be an exception to the notification requirement where the breach is unlikely to result in a risk to the rights and freedoms of natural persons.
 
 ##### Right of Access
 By virtue of Article 15 of the GDPR, a data subject shall have the right to obtain from the controller confirmation as to whether or not personal data concerning the data subject are being processed. If applicable, the controller must also allow access to the personal data.
@@ -745,7 +770,7 @@ Include: -->
    - Provide a description of relational databases and what is important in relational database design (10 points)
    - Discuss how your design takes into account relational database design practices, including normalisation (10 points) -->
 
-- Natalie
+<!--Natalie-->
 
 ### Database Entity Relationship Diagram
 <!-- 14. Provide your database schema design.
@@ -753,6 +778,8 @@ Include: -->
    - Complete ERD. Make sure it accurately reflects your design (10 points)
    - Demonstrate normalisation in your ERD (10 points) -->
 ![Entity Relationship Diagram](docs/entity_relationship_diagram.png "Entity Relationship Diagram")
+
+<!--Natalie-->
 
 ### Database Entities
 <!-- 3 (20 points) Description of database entities
@@ -769,22 +796,23 @@ A user can sign up and must be logged in to buy or sell books. Once logged in a 
 -	View adverts placed by other users
 -	Complete an order to buy a book from another user
 
-The user primary key is the user_id. A user has an email and password attribute, which are both stored as a string. The default for these attributes is an empty string and they are set as required at the database level. These fields have been implemented with the Devise gem. To create a more personal user experience, a first name, last name and username field have also been added. These fields are also stored as a string and are optional at the database level. The decision was made to make only the first name a required field but this has been enforced in the form view so the user cannot submit a request to sign up without entering their first name.
+The user primary key is the `user_id`. A user has an `email` and `password` attribute, which are both stored as a string. The default for these attributes is an empty string and they are set as required at the database level. These fields have been implemented with the Devise gem. To create a more personal user experience, a `firstname`, `lastname` and `username` field have also been added. These fields are also stored as a string and are optional at the database level. The decision was made to make only the first name a required field but this has been enforced in the form view so the user cannot submit a request to sign up without entering their first name.
 
 #### Books
 A book represents a book listing with Google Books. The user enters the book title to add the Google Book listing to the Bookly Book List. Books on this list can be selected by users to create an advert to list a book for sale. A user can also purchase a book from an advert created by another user.
 
-A book has the attributes: ISBN, title, author, description and image_link. The primary key is the book_id. This data is sourced from Google Books and these fields all have the data type, string, to be consistent with the Google Books record. The ISBN and title are required fields as a book cannot be added without this information. The description, image_link and author are optional.
+A book has the attributes: `ISBN`, `title`, `author`, `description` and `image_link`. The primary key is the `book_id`. This data is sourced from Google Books and these fields all have the data type, string, to be consistent with the Google Books record. The `ISBN` and `title` are required fields as a book cannot be added without this information. The `description`, `image_link` and `author` are optional.
 
 #### Adverts
 An advert shows a book listed for sale by a user. The advert displays the book title, author, and description from Google Books. It also displays the condition and price set by the seller, with the seller’s contact email. The cover image is also displayed from Google Books, unless the seller uploads their own image. The adverts appear in the Bookly Book Store.
 
-An advert has the attributes of seller_id, price, condition and book_id. The primary key is the advert_id. The seller_id refers to the user_id but has been renamed for clarity as a seller will post an advert. The seller_id and book_id are stored as integers. The price is a decimal and the condition is a string. All fields are required to create an advert and this in enforced in the application. A user must be signed in, they must select a book, they must enter a price, and the condition is set as a drop-down selection in the view. This prevents the user creating an advert record without the required information.
+An advert has the attributes of `seller_id`, `price`, `condition` and `book_id`. The primary key is the `advert_id`. The `seller_id` refers to the `user_id` but has been renamed for clarity as a seller will post an advert. The `seller_id` and `book_id` are stored as integers. The `price` is a decimal and the `condition` is a string. All fields are required to create an advert and this in enforced in the application. A user must be signed in, they must select a book, they must enter a price, and the condition is set as a drop-down selection in the view. This prevents the user creating an advert record without the required information.
 
 #### Orders
 An order represents when a user opts to purchase a book from an advert listed by another user. The user selects the advert from the Bookly Book Store. Once a user places an order they are directed to Stripe to make payment. If payment is successful, the order is then complete.
 
-The order primary key is order_id, with the attributes advert_id and buyer_id, stored as integers. The buyer_id again refers to the user_id but has been renamed for clarity as a buyer will order a book. Both advert_id and buyer_id are required attributes. This is enforced in the application as a user must be signed in and then select an advert to place an order.
+The order primary key is `order_id`, with the attributes `advert_id` and `buyer_id`, stored as integers. The `buyer_id` again refers to the `user_id` but has been renamed for clarity as a buyer will order a book. Both `advert_id` and `buyer_id` are required attributes. This is enforced in the application as a user must be signed in and then select an advert to place an order.
+<!--Natalie-->
 
 ### Database Relations
 <!-- 12. Discuss the database relations to be implemented.
@@ -819,31 +847,22 @@ Defining relations within the database was a rather involved process as the deve
 5 (10 points) Model discussion
    - Describe how models will implement the relationships given in the database design with ActiveRecord associations" -->
 
-Jack
+Our projects database consisted of several models, these models being `Books`, `Advert`, `Order`, and `User`. 
 
-___
+### Users Model
+The `Users` model was the first one that our team chose to implement. This was to due to the fact that in previous projects we had implemented it later and found that putting functions behind Devise was more work than just starting with it. This model's associations were `has_many :advert` and the standard connections that Devise generated for us.
+- `has_many :adverts`, the purpose of this connection was to allow a single user to create multiple adverts allowing them to advertise more than one book at a time.  
 
-## Short Answer Questions
->1. What is the need (i.e. challenge) that you will be addressing in your project?
->2. Identify the problem you’re trying to solve by building this particular marketplace App? Why is it a problem that needs solving?
->3. Describe the project you will be conducting and how your App will address the needs.
->4. Describe the network infrastructure the App may be based on.
->5. Identify and describe the software to be used in your App.
->6. Identify the database to be used in your App and provide a justification for your choice.
->7. Identify and describe the production database setup (i.e. postgres instance).
->8. Describe the architecture of your App.
->9. Explain the different high-level components (abstractions) in your App.
->10. Detail any third party services that your App will use.
->11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb).
->12. Discuss the database relations to be implemented.
->13. Describe your project’s models in terms of the relationships (active record associations) they have with each other.
->14. Provide your database schema design.
->15. Provide User stories for your App.
->16. Provide Wireframes for your App.
->17. Describe the way tasks are allocated and tracked in your project.
->18. Discuss how Agile methodology is being implemented in your project.
->19. Provide an overview and description of your Source control process.
->20. Provide an overview and description of your Testing process.
->21. Discuss and analyse requirements related to information system security.
->22. Discuss methods you will use to protect information and data.
->23. Research what your legal obligations are in relation to handling user data.
+### Books Model 
+The second model that we implemented was called `Books`. This was because we chose to link our application to Google Books and needed a model to locally store the data we used for this application. This model was connected to the `Adverts` model through a `has_many :adverts` association. 
+- `has_many :adverts`, this was due to the fact that multiple users could create an advert for the same book. 
+
+### Adverts Model
+After books we implemented the `Adverts` model. This model unlike `Book` has associations to more than one table, these connection being `belongs_to :book` and `belongs_to :user`.
+- `belongs_to :book`, this association was created because we only wanted a user to be able to advertise one book per advert.
+- `belongs_to :user`, the purpose of this connection was to ensure that only one user (`:seller`) would be attached to an advert. Only having one user attached to each advert allowed us to display their contact information and name easily. This also simplified our connection to the Stripe cloud service.
+ 
+### Order Model
+For the `Order` model our team settled on two `belongs_to` associations, one being to `:adverts` the other being to `:user`. The purpose of this model was to put the information for Stripe in a single model making its a implementation much simpler.
+- `belongs_to :adverts`, the connection to adverts enabled us to display the details of which advert the user had chosen buy, which then made it quite simple to send that information to Stripe.
+- `belongs_to :user`, the `user` association was again designed to simplify our connection with Stripe.
