@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :complete]
 
 # For the stripe checkout
-get 'orders/complete', to: 'orders#complete'
-get 'orders/cancel', to: 'exchange#index'
+get 'order/complete', to: 'orders#complete'
+get 'order/cancel', to: 'exchange#index'
 
 # For the destroy methods
 delete "adverts/:id", to: "adverts#destroy", as: "advert_destroy_path"
