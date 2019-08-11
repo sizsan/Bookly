@@ -705,7 +705,7 @@ The information security requirements that are related to information systems ar
 
 #### Authentication and Authorisation
 
-This requirement is focused on identifying a user's unique system, controlling a user's privileges and ensuring that all sensitive data is secure and encrypted. The reason that each user has to be identified is to prevent a user from signing up with a bot to spam the database with information causing various complications. After the user has been identified they are then able to sign up, which requires a password. Passwords fall under the category of sensitive data. This is another aspect of the authentication side of this requirement - encrypting sensitive data for the user that is then used to protect their account. Once a user has signed up, they are assigned the absolute minimum amount of privileges needed to use the application. Applying such heavy restrictions to the users privileges means that there are less pages to add authentication to, saving the team time. In the application 'Devise' was used to handle the 'Authentication and Authorisation'.
+This requirement is focused on identifying a user's unique system, controlling a user's privileges and ensuring that all sensitive data is secure and encrypted. The reason that each user has to be identified is to prevent a user from signing up with a bot to spam the database with information causing various complications. After the user has been identified they are then able to sign up, which requires a password. Passwords fall under the category of sensitive data. This is another aspect of the authentication side of this requirement - encrypting sensitive data for the user that is then used to protect their account. Once a user has signed up, they are assigned the absolute minimum amount of privileges needed to use the application. Applying such heavy restrictions to the users privileges means that there are less pages to add authentication to, saving the team time. In the application, Devise was used to handle the 'Authentication and Authorisation'.
 
 #### Encryption
 
@@ -717,7 +717,7 @@ Another requirement of information security is having backups of all the data th
 
 #### Third Party Vendors
 
-Outsourcing to a third party vendor is a great way to save time and resources. However, for each additional cloud service that is used by an application, that application can only be as secure as the aforementioned cloud service. Hence, it is important when outsourcing to only provide the vendor with the minimum amount of privilege and data. Doing this ensures that the application is not left open to unnecessary levels of risk. Another aspect of third party vendor security is ensuring that the connection between an application's local server and the third party's server is secure. An easy way to do this is through the use of API keys for encryption purposes. However, these precautions are meaningless if the vendor itself is insecure. The third party services that are used in this application are Stipe, Cloudinary and Heroku. All of these services offer strong reliable security. In the future though, if there was an increase in user traffic, it may be necessary to consider upgrading the subscriptions with Heroku, Cloudinary and Stripe, as more server space may be required.
+Outsourcing to a third party vendor is a great way to save time and resources. However, for each additional cloud service used by an application, that application can only be as secure as that cloud service. Hence, it is important when outsourcing to only provide the vendor with the minimum amount of privilege and data. Doing this ensures that the application is not left open to unnecessary levels of risk. Another aspect of third party vendor security is ensuring that the connection between an application's local server and the third party's server is secure. An easy way to do this is through the use of API keys for encryption purposes. However, these precautions are meaningless if the vendor itself is insecure. The third party services that are used in this application are Stripe, Cloudinary and Heroku. All of these services offer strong reliable security. In the future though, if there was an increase in user traffic, it may be necessary to consider upgrading the subscriptions with Heroku, Cloudinary and Stripe, as more server space may be required.
 
 ### Methods to Protect Information and Data
 <!-- 22. Discuss methods you will use to protect information and data.
@@ -895,26 +895,26 @@ Defining relations within the database was a rather involved process as the deve
 5 (10 points) Model discussion
    - Describe how models will implement the relationships given in the database design with ActiveRecord associations" -->
 
-Our projects database consisted of several models, these models being `Books`, `Advert`, `Order`, and `User`. 
+Our project database consists of several models, these being `Book`, `Advert`, `Order`, and `User`. 
 
-#### Users Model
+#### User Model
 
-The `Users` model was the first one that the team chose to implement. This was due to the fact that in previous projects, when it was implemented later, team members found that putting functions behind Devise was more work than just starting with it. This model's associations were `has_many :advert` and the standard connections that Devise generated.
+The `User` model was the first one that the team chose to implement. This was due to the fact that in previous projects, when it was implemented later, team members found that putting functions behind Devise was more work than just starting with it. This model's associations were `has_many :advert` and the standard connections that Devise generated.
 - `has_many :adverts`, the purpose of this connection was to allow a single user to create multiple adverts allowing them to advertise more than one book at a time.  
 
-#### Books Model 
+#### Book Model 
 
-The second model implemented was called `Books`. This was because the team chose to link the application to Google Books and needed a model to locally store the data used for this application. This model was connected to the `Adverts` model through a `has_many :adverts` association. 
+The second model implemented was called `Book`. This was because the team chose to link the application to Google Books and needed a model to locally store the data used for this application. This model was connected to the `Advert` model through a `has_many :adverts` association. 
 - `has_many :adverts`, this was due to the fact that multiple users could create an advert for the same book. 
 
-#### Adverts Model
+#### Advert Model
 
-After books, the `Adverts` model was implemented. This model unlike `Book` has associations to more than one table, these connections being `belongs_to :book` and `belongs_to :user`.
+Next, the `Advert` model was implemented. This model unlike `Book` has associations to more than one table, these connections being `belongs_to :book` and `belongs_to :user`.
 - `belongs_to :book`, this association was created because the team only wanted a user to be able to advertise one book per advert.
 - `belongs_to :user`, the purpose of this connection was to ensure that only one user (`:seller`) would be attached to an advert. Only having one user attached to each advert allowed their contact information and name to be displayed easily. This also simplified the connection to the Stripe cloud service.
  
-#### Orders Model
+#### Order Model
 
-For the `Orders` model the team settled on two `belongs_to` associations, one being to `:adverts` the other being to `:user`. The purpose of this model was to put the information for Stripe in a single model making its implementation much simpler.
+For the `Order` model the team settled on two `belongs_to` associations, one being to `:adverts` the other being to `:user`. The purpose of this model was to put the information for Stripe in a single model making its implementation much simpler.
 - `belongs_to :adverts`, the connection to adverts enables the application to display the details of which advert the user has chosen to buy, making it quite simple to send that information to Stripe.
 - `belongs_to :user`, the `user` association was again designed to simplify the connection with Stripe.
