@@ -68,7 +68,7 @@ https://devcenter.heroku.com/articles/http-routing
 https://devcenter.heroku.com/articles/dynos
 https://www.heroku.com/dynos-->
 For this application we used Heroku for our HTTP routing. We chose this cloud service as it handles all of our routing for us through the use of web, worker and one-off dynos. Heroku handles incoming requests by sending them to a load balancer that offers SSL (Secure Socket Layer) termination, from there the request is sent to a router which then determines where the web dynos for the application will be located. Once a web dyno has been selected the router established a TCP connection with then dyno then forwards the HTTP request to said dyno. Once the web dyno has received the HTTP request the request is put into a queue and the web dyno returns a success message to the user. Then a worker dyno picks up the request and runs any process defined in the users procfile that aren't defines as 'web'. The worker dynos then return a result and then saves to a database.
-<!--Jack-->
+<!--Jacck-->
 
 ### Third Party Software and Services
 <!-- 5. Identify and describe the software to be used in your App.
@@ -86,14 +86,14 @@ For this application we used Heroku for our HTTP routing. We chose this cloud se
 
 #### Database Selection
 <!-- 6. Identify the database to be used in your App and provide a justification for your choice. -->
-For this project we decided to use PostgreSQL to manage our database. The initial reason for this decision was that everyone in our development team already had a familiarity with PostgreSQL and its application to rails. Furthermore upon further examination of PostgreSQL we discovered that it was our one of the most advanced database management systems available. The pros of Postgres being that it is flexible, highly extensible, and offers strong security. Postgres allows the us to set specific parameters this means that we were able to put custom limits on fields that required a users input. Another great feature that postgres offers is that it is highly extensible, enabling us to make continuous changes to our database for exmaple if we wanted to add a new datatype we can do that through postgres simply by asking it to create an extension. Postgres also offer great security features, it provides parameter security as well as app security. Another arguably great thing about postgres is that is an open source project meaning that if were to run into a problem there is a vibrant and independent community to aid us. On the other hand Postgres has some draw backs when compared to newer NoSQL databases. The drawbacks being that ot hasa slower performance and is very strict towards querying data. However for the purposes of this application the pros far out wiegh the cons.
+For this project we decided to use PostgreSQL to manage our database. The initial reason for this decision was that everyone in our development team already had a familiarity with PostgreSQL and its application to rails. Furthermore upon further examination of PostgreSQL we discovered that it was our one of the most advanced database management systems available. The pros of Postgres being that it is flexible, highly extensible, and offers strong security. Postgres allows the us to set specific parameters this means that we were able to put custom limits on fields that required a users input. Another great feature that postgres offers is that it is highly extensible, enabling us to make continuous changes to our database for example if we wanted to add a new datatype we can do that through postgres simply by asking it to create an extension. Postgres also offer great security features, it provides parameter security as well as app security. Another arguably great thing about postgres is that is an open source project meaning that if were to run into a problem there is a vibrant and independent community to aid us. On the other hand Postgres has some draw backs when compared to newer NoSQL databases. The drawbacks being that ot hasa slower performance and is very strict towards querying data. However for the purposes of this application the pros far out weigh the cons.
 
-<!--Jack-->
+<!--Jacck-->
 
 #### Production Database Setup
 <!-- 7. Identify and describe the production database setup (i.e. postgres instance). -->
-   
-<!--Jack-->
+   For our rails application we used postgres as our production database instance (environment). However to setup the database our team used the in build rails helpers to generate migration scripts that we then ran using "rails db:migrate". WE generated these migration scripts to create, edit and remove tables from our database. This setup method was selected because we already had a basic understanding of migration scripts and their application to postgreSQL.      
+<!--Jacck-->
 
 ## Design Documentation
 
@@ -185,7 +185,13 @@ To plan this we used trello and daily meetups to ensure everyone was up to date 
 - Complete any remaining tasks on the Trello Board
 
 ### Trello Board
-![alt text](image.jpg)
+![Starting](docs/Trello1.png)
+![Begining](docs/Trello2.png)
+![Priorities](docs/Trello3.png)
+![Week 3](docs/Trello4.png)
+![Sizing](docs/Trello5.png)
+
+
 
 ### Agile Methodology
 <!-- 18. Discuss how Agile methodology is being implemented in your project. -->
@@ -207,16 +213,41 @@ To plan this we used trello and daily meetups to ensure everyone was up to date 
 ### Information System Security Requirements
 <!-- 21. Discuss and analyse requirements related to information system security.
 (30 points) Discuss information security requirements and discuss what you will do to address those requirements, or would do in a future release of the application (beyond MVP) -->
+The information security requirements that are related to information systems are 'Authentication and Authorisation', 'Data Backups', 'Encryption', and 'Third Party Vendor Security'. The following list is made up of the required information security for an information system however they are multiple other requirements that further the strength of an applications security to am information system. 
+
+### Authentication and Authorisation
+This requirement is focused on identifying a users unique system, controlling a users privileges and ensure that all sensitive data is secure and encrypted. The reason the each user has to be identified is to prevent a user from signing up with a bot to spam the database with information causing all manor of complications. After the user has been identified they are then able to sign-up, doing so requires a password. Passwords fall under the category of sensitive data. This is another aspect of the authentication side of this requirement, encrypting sensitive data for the user that is thn used to protect their account. Once a user has signed-up they are assigned the absolute minimum amount of privileges needed to use the application. Applying such heavy restrictions to the users privileges means that we have less pages to add authentication to saving our team time. In our application we chose to use the cloud service 'Devise' to handle our 'Authentication and Authorisation'. 
+
+### Encryption
+Encrypting data is one of the best ways to prevent users from gaining access to sensitive data. This method of security is used to disguise sensitive data like API keys to third party services, passwords and specific portions of code to the user. For this project we did a very small amount of manual encryption with just our Stripe and CLoudinary API keys being in the Credentials file provided by Rails. The rails credentials file can only be decrypted with the unique 'master.key' file that was shared around our team making it possible for us all to use the API keys in the credentials file. However this was not the only encryption that our application used as we were using multiple Cloud service each with their own inbuilt encryption protocols. It is recommended that if we published this application much more information would need to be encrypted. For example ids, crucial source code (unless w released this application as open source).
+
+### Data Backups 
+Another requirement of information security is having backups of all the data that is stored on the system. This security measure ensures that the users crucial data (ie their account) wont be lost if an error occurs that causes us to reset our database. These backups offer a level of safety and security to our data that cannot be gained any other way. For this application we chose to backup all our source code on Github which included the Devise files that stored the users encrypted account information.   
+### Third Party Vendors.
+Out sourcing to a third party vendor is a great way to save time and resources however for each addition cloud service that is used by an application that application looses can only be as secure as the aforementioned cloud service. This is why it is important that when out sourcing to only provide the vendor with the minimum amount of privilege and data. Doing this ensures that you aren't leaving an application open to unnecessary levels of risk. Another aspect of third party vendor security is ensure that the connection between an applications local server and the third parties server are secure. An easy way to do this is through the use of API keys for encryption purposes. However these precaution are meaningless if the vendor itself is insecure. The third party services that are used in this application are Stipe, Cloudinary and Heroku. All of these services offer strong reliable security. In the future we would upgrade out subscriptions to Heroku, Cloudinary and Stripe as we would need more space on their servers with if we had an increase in user traffic.
 
 <!--Jack-->
 
 ### Methods to Protect Information and Data
 <!-- 22. Discuss methods you will use to protect information and data.
 (20 points) Discuss requirement for information security and how your project addresses them (for example, using devise for authentication/authorization). For top points, discuss other options to protect data, benefits and tradeoffs, and why you chose what you did in your project. -->
-The methods that we used to protect our data were devise, stripe, heroku, cloudinary and the credentials file provided by rails to encrypt our api keys. We chose device because it was quite easy to implement and came with its own views for signing up and loging in aswell as a few built in methods that made tailoring the UI to each individual user much simpler.    
+The methods that we used to protect our data were devise, heroku, cloudinary, stripe and the credentials file provided by rails to encrypt our sensitive data ie API keys.
 
-- SSL termination for Heroku (sends encrypted data between the user and the server)
+### Devise (Authentication And Authorisation)
+### Our initial reason for choosing devise was because it was quite easy to implement and came with its own views for signing up and logging in as well as a few built in methods that made tailoring the UI to each individual user much simpler. After doing some further research we discovered that devise was in fact a very viable option for user authentication as it uses strong encryptions and strict validations to keep its information safe. Devise uses an authentication model that is responsible for sending the users passwords to a hash that is then encrypted and validating the authenticity of a user while signing in. To encrypt the passwords Devise generates a random string that is then fed to the development database for a rails application. Devise also validates the users inputs based on default requirements like default password length and validation for emails. Overall Devise is an incredibly secure, easy to use cloud service for adding Authentication to a rails application.
 
+### Heroku (Network Security)
+Heroku employs many different methods of security to protect their servers along with the users information and their network. These methods include 'Firewalls', 'Spoofing and Sniffing Protections', 'System and Customer Authentication' and 'Application Isolation'. The heroku firewalls are designed to restrict access to systems from external networks and internal systems."By default, all access is denied and only explicitly allowed ports and protocols are allowed based on business need." This excessive limitation helps Heroku with another method of security. Application isolation in Heroku is done through the use of dynos that are randomly selected by an algorithm run by Heroku. Isolating each user application in their own environment prevents a myriad of stability and security issues. These issues being DDoss and Spoofing and Sniffing. This is because each environment is protected with a firewall that will not deliver traffic to an interface is not directed addressed to. Heroku protects its connection to the postgres database through an incredibly strong encryption called SSL. 
+
+
+### Rails Credentials File (Encryption)
+A new feature (as of rails 5.2) is an encrypted credentials file. This file is encrypted with a unique key that is stored in the 'master.key' file. For out application we used this file to protected our API keys for Stripe and Cloudinary. The benefits of using the built-in rails encryption is that encrypted credentials are saved in a repository and only having one file. This saved us time as it was easier to manage ust having one file than decoding multiple. An exmaple of a master.key file can be found [here.](https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2)
+
+### Cloudinary/Stripe (Third Party Vendor Security)
+Cloudinary and Stripe use very similar security methods to keep their service safe. In terms of application security they both use a secret API key to connect to an application. This key is stored in our credentials file and is encrypted by both services. I regards to  network security they differ slightly, Cloudinary a third party software called Dome9 to monitor network traffic to and from their servers whereas Stripe uses an SSL encryption for all of its HTTP requests. Both of these methods are viable and provide more than a reasonable amount of security.
+
+### Backups 
+To backup our application we used Github. Github is a trusted online storage platform that is used by many real world companies and therefore has more than enough security for our purposes. 
 <!--Jack-->
 
 ### Legal Obligations for Data Protection
@@ -264,7 +295,26 @@ Include: -->
 5 (10 points) Model discussion
    - Describe how models will implement the relationships given in the database design with ActiveRecord associations" -->
 
-<!--Jack-->
+### Our projects database consisted of serval models, these models being 'Books', 'Advert', 'Order', and 'User'. 
+
+### Users Model
+### The Users model was the first one that our team chose to implement. This was to due to the fact that in previous projects we had implemented it later and found that putting functions behind devise was more work than just starting with it. This models associations were 'has_many :advert' and the standard connections that devise generated for us.
+- has_many :adverts, The purpose of this connection was to allow a single user to create multiple adverts allowing them to advertise more than one book at a time.  
+
+### Books Model 
+### The second model that we implemented was the called 'Books'. This was because we chose to link our application to google books and needed a model to locally store the data we used for this application. This model was connected to the 'Adverts' model through a 'has_many :adverts' association. 
+- has_many :adverts, This was due to the fact that multiple users could create an advert for the same book. 
+
+### Adverts Model
+After books we implemented the adverts model. This model unlike book has associations to more than one table, these connection being 'belongs_to :book' and 'belongs_to :user'.
+- belongs_to :book, This association was created because we only wanted a user to be able to advertise one book per advert.
+- belongs_to :user, The purpose of this connection was to ensure that only one user (:seller) would be attached to an advert. Only having one user attached to each advert allowed us to display their contact information and name easily. This also simplified our connection to the Stripe cloud service.
+ 
+### Order Model
+For the 'Order' model our team settled on two 'belongs_to' associations, one being to ':adverts' the other being to ':user'. The purpose of this model was to put the information for 'Stripe' in a single model making its a implementation much more simple.
+- belongs_to :adverts, the connection to adverts enabled us to display the details of which advert the user had chosen buy, which then made it quite simple to send that information to 'Stripe'.
+- belongs_to :user, The 'user' association was again designed to simplify our connection with 'Stripe'. 
+<!--Jacck-->
 
 ___
 
