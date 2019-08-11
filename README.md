@@ -725,23 +725,23 @@ Outsourcing to a third party vendor is a great way to save time and resources. H
 
 The methods used to protect data are Devise, Heroku, Cloudinary, Stripe and the `credentials` file provided by Rails to encrypt sensitive data (e.g. API keys).
 
-### Devise (Authentication And Authorisation)
+#### Devise (Authentication And Authorisation)
 
 The initial reason for choosing Devise was because it was quite easy to implement and came with its own views for signing up and logging in as well as a few built-in methods that made tailoring the UI to each individual user much simpler. After doing some further research the team discovered that Devise was in fact a viable option for user authentication as it uses strong encryptions and strict validations to keep its information safe. Devise uses an authentication model that is responsible for sending the user's passwords to a hash that is then encrypted, and for validating the authenticity of a user while signing in. To encrypt the passwords, Devise generates a random string that is then fed to the development database for a Rails application. Devise also validates the user's inputs based on default requirements like default password length and validation for emails. Overall, Devise is an incredibly secure, easy to use cloud service for adding authentication to a Rails application.
 
-### Heroku (Network Security)
+#### Heroku (Network Security)
 
 Heroku employs many different methods of security to protect their servers along with the user's information and their network. These methods include 'Firewalls', 'Spoofing and Sniffing Protections', 'System and Customer Authentication' and 'Application Isolation'. The Heroku firewalls are designed to restrict access to systems from external networks and internal systems. "By default, all access is denied and only explicitly allowed ports and protocols are allowed based on business need." This excessive limitation helps Heroku with another method of security. Application isolation in Heroku is done through the use of dynos that are randomly selected by an algorithm run by Heroku. Isolating each user application in their own environment prevents a myriad of stability and security issues. These issues being Distributed Denial of Service (DDoS) attacks and Spoofing and Sniffing. This is because each environment is protected with a firewall that will not deliver traffic to an interface that it is not directly addressed to. Heroku protects its connection to the PostgreSQL database through an incredibly strong encryption called SSL. 
 
-### Rails Credentials File (Encryption)
+#### Rails Credentials File (Encryption)
 
 A new feature (as of Rails 5.2) is an encrypted credentials file. This file is encrypted with a unique key that is stored in the `master.key` file. This file was used in the application to protect the API keys for Stripe and Cloudinary. The benefits of using the built-in Rails encryption is that encrypted credentials are saved in a repository and are all in one file. This saved time as it was easier to manage having one file, than decoding multiple. An example of a `master.key` file can be found [here.](https://www.engineyard.com/blog/rails-encrypted-credentials-on-rails-5.2)
 
-### Cloudinary/Stripe (Third Party Vendor Security)
+#### Cloudinary/Stripe (Third Party Vendor Security)
 
 Cloudinary and Stripe use very similar security measures to keep their service safe. In terms of application security, they both use a secret API key to connect to an application. This key is stored in the credentials file and is encrypted by both services. In regards to network security, they differ slightly. Cloudinary uses third party software called Dome9 to monitor network traffic to and from their servers. Stripe uses an SSL encryption for all of its HTTP requests. Both of these methods are viable and provide more than a reasonable amount of security.
 
-### Backups 
+#### Backups 
 
 To backup our application we used GitHub. GitHub is a trusted online storage platform that is used by many real world companies and therefore has more than enough security for our purposes. 
 
