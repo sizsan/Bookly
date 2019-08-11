@@ -22,6 +22,7 @@ cancel_url: 'http://localhost:3000/orders/cancel',
     end
 
     def complete
+        redirect_to orders_complete_path
     end
 
 end
