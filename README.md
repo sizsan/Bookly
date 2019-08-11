@@ -130,9 +130,8 @@ Jack
 ## Design Documentation
 
 ### Design Process
-<!-- Do we need this heading? Not sure what to include here? Perhaps an intro to all that is discussed below? Or not required? -->
 1. Formulate required data as models and their entities;
-2. Establish relations between those models in order to maximise effiency and reduce reputation in data;
+2. Establish relations between those models in order to maximise efficiency and reduce reputation in data;
 3. Define methods within the model to determine how that data is passed to the controller;
 4. Create controller actions where required to interact with database and views; and
 5. Create views to display that data to the end user.
@@ -161,10 +160,6 @@ If the user clicks on the advert, the ID of the advert is passed through to the 
 
 Once the user attempts to order the book within that advert, the ID of the advert will be passed to the `Orders` controller which redirects that information to Stripe in order to process payment. Once payment is completed, the `Orders` controller is again tasked with routing the user to the completion page. Here, the relevant view displays a completion prompt to the user.
 
-#### User Journey Workflow
-![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
-
-
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
@@ -183,27 +178,31 @@ In terms of payment, eBay employs PayPal as its payment gateway much like Bookly
 - US5 - As a User I can add photos to my adverts.
 - US6 - As a Seller I can delete my adverts.
 
+<!-- Now that we have MVC diagram above, should we move user journey workflow diagram back to here now perhaps? This is where is was listed in canvas. -->
+### User Journey Workflow
+![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
+
 ### Wireframes
 <!-- 16. Provide Wireframes for your App. -->
 Natalie
 #### Desktop
-![Desktop Wireframes](image.jpg)
+![Desktop Wireframes](docs/wireframes_desktop.png "Desktop Wireframes")
 #### Tablet
-![Tablet Wireframes](image.jpg)
+![Tablet Wireframes](docs/wireframes_tablet.png "Tablet Wireframes")
 #### Mobile
-![Mobile Wireframes](image.jpg)
+![Mobile Wireframes](docs/wireframes_mobile.png "Mobile Wireframes")
 
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
 
-To plan this we used Trello and daily standups to ensure everyone was up to date and knew what their task for the day was.
+To plan this the team used Trello and daily standups to ensure everyone was up to date and knew what their task for the day was.
 
 ### Project Plan & Timeline
 
 #### Week 1
 
 ##### Day 1
-- Settle on an idea for our marketplace application
+- Settle on an idea for the marketplace application
 - Begin skeletons of the App, README, ERD, Trello
 - Implement a CSS framework (i.e. Bulma)
 
@@ -745,7 +744,11 @@ Include: -->
    - Provide a description of relational databases and what is important in relational database design (10 points)
    - Discuss how your design takes into account relational database design practices, including normalisation (10 points) -->
 
-- Natalie
+A relational database recognises relationships among sets of data, stored in tables. These tables form the models for the database. The table columns represent the model attributes or fields, while a row represents a record.
+
+In designing the database, it is important to consider what information is required, how it will be sorted and stored among tables, and how the data can be accessed to accommodate processing and reporting needs. The goal is  to optimise database efficiency by reducing redundancy and duplication of data, ensuring data accuracy and integrity, and allowing for extendibility. The process of database normalisation seeks to achieve this by splitting data into smaller tables, where data is not repeated, and linking them through relationships.
+
+The Entity Relationship Diagram (ERD) below displays how the database for this project has been designed. Data is stored in four separate tables: Users, Books, Adverts and Orders. Data is not duplicated in any of these tables. The Adverts table retrieves the seller's information from the Users table through the foreign key, seller_id, and book information from the Books table through the foreign key, book_id. Likewise, the Orders table draws information about an advert from the Adverts table, through the foreign key, advert_id, and information about the buyer from the Users table through the foreign key, buyer_id.
 
 ### Database Entity Relationship Diagram
 <!-- 14. Provide your database schema design.
