@@ -154,12 +154,9 @@ If the user clicks on the advert, the ID of the advert is passed through to the 
 
 Once the user attempts to order the book within that advert, the ID of the advert will be passed to the `Orders` controller which redirects that information to Stripe in order to process payment. Once payment is completed, the `Orders` controller is again tasked with routing the user to the completion page. Here, the relevant view displays a completion prompt to the user.
 
-<<<<<<< HEAD
 #### User Journey Workflow
 ![User Journey Workflow](docs/user_journey_workflow.png "User Journey Workflow")
 
-=======
->>>>>>> master
 ### Data Structure of Marketplace Apps
 <!-- 11. Describe (in general terms) the data structure of marketplace apps that are similar to your own (e.g. eBay, Airbnb). -->
 
