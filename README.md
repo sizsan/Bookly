@@ -188,9 +188,9 @@ Natalie
 #### Desktop
 ![Desktop Wireframes](image.jpg)
 #### Tablet
-![Tablet Wireframes](image.jpg)
+![Tablet Wireframes](docs/wireframes_tablet.png "Tablet Wireframes")
 #### Mobile
-![Mobile Wireframes](image.jpg)
+![Mobile Wireframes](docs/wireframes_mobile.png "Mobile Wireframes")
 
 ## Planning Process
 <!-- 17. Describe the way tasks are allocated and tracked in your project. -->
