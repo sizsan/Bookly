@@ -1,6 +1,8 @@
 class Advert < ApplicationRecord
   belongs_to :book
+  # This defines the relationship between `books` and `adverts` where a book has many adverts and adverts belong to a book.
   belongs_to :seller, class_name: "User"
+  # This defines the relationship between 'users' and  'adverts' where a single user can have many advert and an advert can only have one user.
   has_one_attached :cover
 
   def self.order_by_user
