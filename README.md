@@ -186,7 +186,7 @@ In terms of payment, eBay employs PayPal as its payment gateway much like Bookly
 <!-- 16. Provide Wireframes for your App. -->
 Natalie
 #### Desktop
-![Desktop Wireframes](image.jpg)
+![Desktop Wireframes](docs/wireframes_desktop.png "Desktop Wireframes")
 #### Tablet
 ![Tablet Wireframes](docs/wireframes_tablet.png "Tablet Wireframes")
 #### Mobile
