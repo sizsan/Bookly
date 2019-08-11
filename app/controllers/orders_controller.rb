@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
         amount: (@advert.price * 100).to_i,
         currency: 'aud',
         quantity: 1,
+        data: { turbolinks: false }
 }],
 success_url: 'http://localhost:3000/orders/complete',
 cancel_url: 'http://localhost:3000/orders/cancel',
